@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Услуги салона эпиляции Елены Гончаровой — эпиляция, электроэпиляция, цены.">
+  <title>Услуги — Студия эпиляции Елены Гончаровой</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
+
+  <header class="header" role="banner">
+    <div class="header__inner container">
+      <a class="header__logo" href="index.html" aria-label="Студия эпиляции Елены Гончаровой — на главную">
+        <span class="header__logo-text">Студия эпиляции Елены Гончаровой</span>
+      </a>
+      <button class="header__burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-menu" id="burger-btn">
+        <span class="header__burger-line" aria-hidden="true"></span>
+        <span class="header__burger-line" aria-hidden="true"></span>
+        <span class="header__burger-line" aria-hidden="true"></span>
+      </button>
+      <nav class="nav" id="nav-menu" role="navigation" aria-label="Основная навигация">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="index.html">Главная</a></li>
+          <li class="nav__item nav__item--dropdown">
+            <button type="button" class="nav__link nav__link--trigger nav__link--active" aria-expanded="false" aria-haspopup="true" aria-controls="nav-services" id="nav-services-trigger">Услуги</button>
+            <ul class="nav__dropdown" id="nav-services" role="menu">
+              <li class="nav__item nav__item--submenu" role="none">
+                <a class="nav__dropdown-trigger nav__dropdown-trigger--link" href="services.html#epilation" aria-expanded="false" aria-controls="nav-epilation" id="nav-epilation-trigger" role="menuitem">Эпиляция</a>
+                <ul class="nav__submenu" id="nav-epilation" role="menu">
+                  <li role="none"><a class="nav__sublink" href="services.html#epilation_shugaring" role="menuitem">Шугаринг</a></li>
+                  <li role="none"><a class="nav__sublink" href="services.html#epilation_shugaring-bikini" role="menuitem">Шугаринг бикини</a></li>
+                  <li role="none"><a class="nav__sublink" href="services.html#epilation_polymer" role="menuitem">Полимерная эпиляция</a></li>
+                  <li role="none"><a class="nav__sublink" href="services.html#epilation_wax" role="menuitem">Восковая эпиляция</a></li>
+                  <li role="none"><a class="nav__sublink" href="services.html#epilation_wax-bikini" role="menuitem">Восковая эпиляция бикини</a></li>
+                  <li role="none"><a class="nav__sublink" href="services.html#epilation_armpits" role="menuitem">Эпиляция подмышек</a></li>
+                  <li role="none"><a class="nav__sublink" href="services.html#epilation_face" role="menuitem">Эпиляция лица</a></li>
+                  <li role="none"><a class="nav__sublink" href="services.html#epilation_legs" role="menuitem">Эпиляция ног</a></li>
+                  <li role="none"><a class="nav__sublink" href="services.html#epilation_arms" role="menuitem">Эпиляция рук</a></li>
+                </ul>
+              </li>
+              <li class="nav__item nav__item--submenu" role="none">
+                <a class="nav__dropdown-trigger nav__dropdown-trigger--link" href="services.html#electro" aria-expanded="false" aria-controls="nav-electro" id="nav-electro-trigger" role="menuitem">Электроэпиляция</a>
+                <ul class="nav__submenu" id="nav-electro" role="menu">
+                  <li role="none"><a class="nav__sublink" href="services.html#electro_about" role="menuitem">Об электроэпиляции</a></li>
+                  <li role="none"><a class="nav__sublink" href="services.html#electro_bikini" role="menuitem">Электроэпиляция бикини</a></li>
+                  <li role="none"><a class="nav__sublink" href="services.html#electro_face" role="menuitem">Электроэпиляция на лице</a></li>
+                  <li role="none"><a class="nav__sublink" href="services.html#electro_armpits" role="menuitem">Электроэпиляция подмышек</a></li>
+                </ul>
+              </li>
+              <li class="nav__item" role="none"><a class="nav__sublink" href="services.html#prices" role="menuitem">Цены</a></li>
+            </ul>
+          </li>
+          <li class="nav__item"><a class="nav__link" href="reviews.html">Отзывы</a></li>
+          <li class="nav__item"><a class="nav__link" href="index.html#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" role="main" class="page-services">
+    <section class="services-page" aria-labelledby="services-title">
+      <div class="container">
+        <h1 id="services-title" class="section-title">Услуги</h1>
+
+        <div class="services-tabs" role="tablist" aria-label="Категории услуг">
+          <button type="button" class="services-tabs__btn" role="tab" aria-selected="true" aria-controls="panel-epilation" id="tab-epilation" data-cat="epilation">Эпиляция</button>
+          <button type="button" class="services-tabs__btn" role="tab" aria-selected="false" aria-controls="panel-electro" id="tab-electro" data-cat="electro">Электроэпиляция</button>
+          <button type="button" class="services-tabs__btn" role="tab" aria-selected="false" aria-controls="panel-prices" id="tab-prices" data-cat="prices">Цены</button>
+        </div>
+
+        <div id="panel-epilation" class="services-panel" role="tabpanel" aria-labelledby="tab-epilation">
+          <h2 class="services-panel__title">Эпиляция</h2>
+          <ul class="services-list" aria-label="Список услуг">
+            <li><button type="button" class="services-list__item" data-service="shugaring">Шугаринг</button></li>
+            <li><button type="button" class="services-list__item" data-service="shugaring-bikini">Шугаринг бикини</button></li>
+            <li><button type="button" class="services-list__item" data-service="polymer">Полимерная эпиляция</button></li>
+            <li><button type="button" class="services-list__item" data-service="wax">Восковая эпиляция</button></li>
+            <li><button type="button" class="services-list__item" data-service="wax-bikini">Восковая эпиляция бикини</button></li>
+            <li><button type="button" class="services-list__item" data-service="armpits">Эпиляция подмышек</button></li>
+            <li><button type="button" class="services-list__item" data-service="face">Эпиляция лица</button></li>
+            <li><button type="button" class="services-list__item" data-service="legs">Эпиляция ног</button></li>
+            <li><button type="button" class="services-list__item" data-service="arms">Эпиляция рук</button></li>
+          </ul>
+          <div class="services-detail" id="service-detail-epilation" aria-live="polite" hidden>
+            <div class="service-content" data-service="shugaring" hidden>
+              <section class="service-content__block service-content__block--a" aria-labelledby="shugaring-intro">
+                <div class="container service-content__block-inner">
+                  <div class="service-content__intro">
+                    <div class="service-content__text-wrap">
+                      <h2 id="shugaring-intro" class="service-content__title">Шугаринг</h2>
+                      <p class="service-content__text">Сахарная эпиляция, или шугаринг (от англ. «sugar» – сахар), — один из самых популярных сейчас методов удаления волос. За натуральный состав сахарной пасты, эффективность и бережность этот метод депиляции стал излюбленным в нашем салоне. До четырех недель ваша кожа будет радовать незабываемой бархатной нежностью и гладкостью!</p>
+                      <p class="service-content__label">Виды сахарной эпиляции:</p>
+                      <ul class="service-content__list">
+                        <li>шугаринг интимных зон</li>
+                        <li>шугаринг голеней, бедер</li>
+                        <li>шугаринг на руках</li>
+                        <li>шугаринг на лице</li>
+                        <li>шугаринг подмышечных впадин</li>
+                      </ul>
+                    </div>
+                    <div class="service-content__img-wrap">
+                      <img class="service-content__img" src="images/shugaring/1.jpg" alt="Шугаринг в нашем салоне" width="400" height="300" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="shugaring-advantages">
+                <div class="container">
+                  <h2 id="shugaring-advantages" class="service-content__title service-content__title--uppercase">Преимущества сахарной эпиляции</h2>
+                  <ul class="service-content__list service-content__list--advantages">
+                    <li>После шугаринга практически не бывает вросших волос, поскольку волос вместе с луковицей удаляется по направлению своего естественного роста и луковица не травмируется.</li>
+                    <li>Минимум неприятных ощущений и отсутствие ожогов, благодаря тому, что температура пасты не превышает температуру тела.</li>
+                    <li>Идеально подходит для депиляции самых чувствительных интимных зон.</li>
+                    <li>Отсутствие раздражений и аллергии.</li>
+                    <li>100% натуральные компоненты в составе, без красителей и аллергенов.</li>
+                    <li>Возможность обработки тонкой дряблой кожи.</li>
+                    <li>Кожа не растягивается благодаря особой технике снятия пасты (мелкими частыми движениями).</li>
+                  </ul>
+                  <p class="service-content__label">Дополнительные плюсы:</p>
+                  <ul class="service-content__list">
+                    <li>Эффект пилинга</li>
+                    <li>Сахарную эпиляцию можно проводить при варикозе и проблемах с сосудами</li>
+                    <li>Паста легко смывается водой и не липнет</li>
+                  </ul>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="shugaring-prices">
+                <div class="container">
+                  <h2 id="shugaring-prices" class="service-content__title">Цены на шугаринг</h2>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table" aria-label="Цены на шугаринг">
+                      <tbody>
+                        <tr><td>Голень</td><td>20–30 минут</td><td>1000 р.</td></tr>
+                        <tr><td>Бедра</td><td>20–30 минут</td><td>1100 р.</td></tr>
+                        <tr><td>Задняя поверхность бедра и ягодицы</td><td>20–30 минут</td><td>600 р.</td></tr>
+                        <tr><td>Ноги полностью</td><td>30–40 минут</td><td>2000 р.</td></tr>
+                        <tr><td>Классическое бикини</td><td>5–7 минут</td><td>1000 р.</td></tr>
+                        <tr><td>Глубокое бикини</td><td>15–25 минут</td><td>1800 р.</td></tr>
+                        <tr><td>Ягодицы</td><td>5–7 минут</td><td>600 р.</td></tr>
+                        <tr><td>Поясница</td><td>5–7 минут</td><td>500 р.</td></tr>
+                        <tr><td>Руки (до локтя)</td><td>10 минут</td><td>800 р.</td></tr>
+                        <tr><td>Руки (полностью)</td><td>15 минут</td><td>1000 р.</td></tr>
+                        <tr><td>Подмышки</td><td>3–8 минут</td><td>600/<br>700 р.</td></tr>
+                        <tr><td>Зона над губой</td><td>3 минуты</td><td>200 р.</td></tr>
+                        <tr><td>Зона подбородка</td><td>3 минуты</td><td>200 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h3 class="service-content__table-title">Цены на шугаринг комплекс</h3>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table service-content__table--two-cols" aria-label="Цены на шугаринг комплекс">
+                      <tbody>
+                        <tr><td>Сет 1: глубокое бикини + подмышки</td><td>2100 р.</td></tr>
+                        <tr><td>Сет 2: глубокое бикини + голени/бедра</td><td>2600 р.</td></tr>
+                        <tr><td>Сет 3: глубокое бикини + подмышки + голени/бедра</td><td>3000 р.</td></tr>
+                        <tr><td>Сет 4: глубокое бикини + подмышки + ноги полностью</td><td>3800 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="service-content" data-service="shugaring-bikini" hidden>
+              <section class="service-content__block service-content__block--a" aria-labelledby="shugaring-bikini-intro">
+                <div class="container">
+                  <h2 id="shugaring-bikini-intro" class="service-content__title">Шугаринг бикини</h2>
+                  <p class="service-content__text">Эпиляция бикини означает быть в любой ситуации уверенной в собственной неотразимости и гладкости кожи, что важно для каждой женщины. Область бикини — с особенно нежной и чувствительной кожей.</p>
+                  <p class="service-content__label">Эпиляция глубокого бикини</p>
+                  <p class="service-content__text">Эпиляцию бикини можно разделить на два вида в зависимости от депилируемого участка:</p>
+                  <ul class="service-content__list">
+                    <li><strong>Эпиляция бикини классическая</strong><br>Это удаление волос в видимых зонах по линии нижнего белья или купальника.</li>
+                    <li><strong>Эпиляция глубокого бикини</strong> (или «бразильская эпиляция»)<br>При этом виде депиляции волосы удаляются на лобке, половых губах и между ягодицами. Волоски удаляются полностью, оставляя интимную зону абсолютно гладкой. А на лобке, по вашему желанию, мастер оставляет узкую полоску.</li>
+                  </ul>
+                  <div class="service-content__img-wrap service-content__img-wrap--large">
+                    <img class="service-content__img" src="images/shugaring_bikini/1.jpg" alt="Шугаринг бикини в нашем салоне" width="400" height="300" loading="lazy">
+                  </div>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="shugaring-bikini-methods">
+                <div class="container">
+                  <h2 id="shugaring-bikini-methods" class="service-content__title">Способы эпиляции бикини</h2>
+                  <p class="service-content__text">Из всего многообразия способов депиляции, именно шугаринг бикини является наиболее безопасным и действенным. Такой традиционный метод как бритва, вызывает раздражение нежной кожи глубокого бикини, при случайных порезах или особенно когда начинает отрастать щетина из жестких волосков. Пользоваться эпилятором для эпиляции глубокого бикини крайне болезненно и затруднительно, а крема для депиляции в такой чувствительной области противопоказаны.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="shugaring-bikini-secret">
+                <div class="container">
+                  <h2 id="shugaring-bikini-secret" class="service-content__title">Шугаринг бикини: в чем секрет?</h2>
+                  <p class="service-content__text">Шугаринг совершенно идеально подходит для эпиляции глубокого бикини! Вы можете навсегда забыть о раздражении, порезах и ужасной щетине!</p>
+                  <ul class="service-content__list service-content__list--advantages">
+                    <li>только натуральный состав, главный компонент в котором — сахар</li>
+                    <li>волос удаляется по своему росту вместе с волосяной луковицей</li>
+                    <li>гладкая кожа до трех недель и никакого врастания</li>
+                    <li>безопасно и практически безболезненно</li>
+                  </ul>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="shugaring-bikini-prices">
+                <div class="container">
+                  <h2 id="shugaring-bikini-prices" class="service-content__title">Цены на шугаринг бикини</h2>
+                  <p class="service-content__text">Эпиляция бикини — процесс, требующий предельной осторожности и аккуратности от косметолога. Наши мастера работают профессионально и качественно. Вы можете записаться в любой из салонов в Долгопрудном.</p>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table" aria-label="Цены на шугаринг бикини">
+                      <tbody>
+                        <tr><td>Глубокое бикини</td><td>15–25 минут</td><td>1800 р.</td></tr>
+                        <tr><td>Классическое бикини</td><td>5–7 минут</td><td>1000 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="shugaring-bikini-prep">
+                <div class="container">
+                  <h2 id="shugaring-bikini-prep" class="service-content__title">Подготовка к эпиляции бикини</h2>
+                  <p class="service-content__text">Волнение и смущение перед столь деликатным процессом — это совершенно нормально! В отличие от депиляции других участков, большое значение для женщины имеет чувство уверенности в себе. Рекомендации к подготовке к эпиляции глубокого бикини довольно просты:</p>
+                  <ul class="service-content__list service-content__list--advantages">
+                    <li><strong>Гигиена.</strong> Чтобы чувствовать себя комфортно перед косметологом, перед визитом воспользуйтесь биде или гигиеническими салфетками.</li>
+                    <li><strong>Сухая чистая кожа.</strong> Накануне процедуры не пользуйтесь кремами в области бикини.</li>
+                    <li><strong>Длина волос.</strong> Оптимальная длина волос — 4–5 мм, при которой обеспечивается максимальный охват и минимум неприятных ощущений.</li>
+                    <li><strong>Первый раз.</strong> Для первого сеанса вы можете начать с классического бикини, чтобы понять свой болевой порог и привыкнуть к новым ощущениям.</li>
+                    <li><strong>Обезболивание.</strong> Если процедура для вас болезненна, то попросите специалиста нанести обезболивающее средство.</li>
+                    <li><strong>Психологический комфорт.</strong> Перед эпиляцией бикини настройтесь на позитивный лад. Очень важно найти своего мастера, к которому будете обращаться постоянно, и тогда чувство стеснения сменится спокойствием, а за веселыми женскими разговорами вы не заметите, как пройдет время.</li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+            <div class="service-content" data-service="polymer" hidden>
+              <section class="service-content__block service-content__block--a" aria-labelledby="polymer-intro">
+                <div class="container">
+                  <h2 id="polymer-intro" class="service-content__title">Полимерная эпиляция</h2>
+                  <p class="service-content__text">Гладкая кожа – мечта многих девушек, поэтому индустрия красоты постоянно предлагает новые способы удаления нежелательных волос. Относительно недавно появилась полимерная эпиляция. Она обладает множеством преимуществ и отлично подходит для избавления от волосков на ногах и в зоне бикини.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="polymer-what">
+                <div class="container">
+                  <h2 id="polymer-what" class="service-content__title">Что это такое</h2>
+                  <p class="service-content__text">Полимерная эпиляция – это избавление от волос с помощью техники, разработанной на основе бразильской депиляции. Однако в традиционном исполнении такая методика болезненна. К тому же не всегда удается удалить все волоски с первого раза.</p>
+                  <p class="service-content__text">Этих недостатков лишены продукты с инновационным составом на основе полимеров. Полимер обволакивает стержни и проникает вглубь к луковицам. Полимеры способствуют отмиранию волосков и их легкому удалению. При рывковом движении паста убирается с кожи вместе со всей нежелательной растительностью.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="polymer-features">
+                <div class="container">
+                  <h2 id="polymer-features" class="service-content__title">Особенности и отличия от других методов</h2>
+                  <p class="service-content__text">Главные преимущества эпиляции полимером в том, что волосы удаляются с первого раза и практически без боли, а эффект гладкой кожи держится несколько недель. Также методика обладает следующими особенностями и преимуществами:</p>
+                  <ol class="service-content__list service-content__list--numbered">
+                    <li>Используется полимер, который соответствует европейским стандартам качества и безопасности. Он не вызывает аллергических реакций и обладает нежной консистенцией, поэтому подходит людям с чувствительной кожей.</li>
+                    <li>Исключены риски ожогов и раздражения, поскольку для эффективного удаления волос пасту достаточно нагревать до 43°С.</li>
+                    <li>Инновационная технология позволяет за раз удалять волоски с большой зоны тела. Например, при эпиляции ног можно сразу нанести пасту на всю площадь от стопы до верха бедра. Это ускоряет весь процесс.</li>
+                    <li>Процедура комфортная и практически безболезненная. Состав надежно захватывает волоски, не прилипая к коже. Поэтому он удаляется легко и почти без дискомфорта.</li>
+                    <li>Удаляется даже короткая щетина, отрастающая в течение суток после бритья. Поэтому не нужно долго ждать, отращивать волоски, чтобы провести эпиляцию. Кожа всегда будет гладкой и нежной.</li>
+                    <li>По заверению производителя полимера, в 99% при его использовании не появляются вросшие волосы. Еще у средства экономичный расход, поэтому его хватает надолго.</li>
+                  </ol>
+                  <p class="service-content__text">По мнению косметологов, эпиляция полимером – оптимальное решение для занятых девушек, у которых каждая минута на счету, для обладательниц чувствительной кожи и для тех всех, кто хочет, чтобы ноги оставались гладкими как можно дольше.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="polymer-how">
+                <div class="container">
+                  <h2 id="polymer-how" class="service-content__title">Как проводится процедура</h2>
+                  <p class="service-content__text">Эпиляция полимером – новая разновидность ваксинга, поэтому процедура состоит из аналогичных трех этапов:</p>
+                  <ul class="service-content__list">
+                    <li>Подготовка кожи к обработке.</li>
+                    <li>Удаление нежелательных волос.</li>
+                    <li>Последующий уход.</li>
+                  </ul>
+                  <h3 class="service-content__title">Подготовка</h3>
+                  <p class="service-content__text">Несмотря на то что полимер удаляет даже мелкие волоски, предварительно лучше воспользоваться скрабом для тела. Это позволит быстро подготовить кожу к дальнейшей обработке и деликатно удалить частички ороговевшего эпидермиса.</p>
+                  <p class="service-content__text">Сильно отращивать волосы перед их удалением не нужно. Достаточно длины в 2 мм, чтобы полимерная паста подействовала в полную силу.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="polymer-process">
+                <div class="container">
+                  <h2 id="polymer-process" class="service-content__title">Ход процедуры</h2>
+                  <p class="service-content__text">После подготовки кожи ее следует обработать антисептиком. После этого можно начинать саму эпиляцию.</p>
+                  <p class="service-content__text">Состав наносится по направлению роста волос на несколько секунд, а затем удаляется пластом. Использовать полоски, как при традиционном ваксинге, не нужно. Действия повторяют, пока кожа не станет гладкой.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="polymer-sessions">
+                <div class="container">
+                  <h2 id="polymer-sessions" class="service-content__title">Сколько нужно сеансов</h2>
+                  <p class="service-content__text">Необходимое количество сеансов – индивидуальный фактор. Это зависит от типа волос и работы гормонов, которые влияют на их рост. В большинстве случаев бывает достаточно провести полимерную эпиляцию 5–7 раз, после чего волоски становятся тоньше.</p>
+                  <p class="service-content__text">После первой процедуры кожа остается гладкой около 3 недель. После каждого следующего сеанса рост волос замедляется.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="polymer-prices">
+                <div class="container">
+                  <h2 id="polymer-prices" class="service-content__title">Цены на полимерную эпиляцию</h2>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table" aria-label="Цены на полимерную эпиляцию">
+                      <tbody>
+                        <tr><td>Голень</td><td>20–30 минут</td><td>1500 р.</td></tr>
+                        <tr><td>Бедра</td><td>20–30 минут</td><td>1500 р.</td></tr>
+                        <tr><td>Ягодицы</td><td>30–40 минут</td><td>1000 р.</td></tr>
+                        <tr><td>Поясница</td><td>30–40 минут</td><td>800 р.</td></tr>
+                        <tr><td>Ноги полностью</td><td>30–40 минут</td><td>3000 р.</td></tr>
+                        <tr><td>Глубокое бикини</td><td>15–25 минут</td><td>2000 р.</td></tr>
+                        <tr><td>Классическое бикини</td><td>15–25 минут</td><td>2000 р.</td></tr>
+                        <tr><td>Руки (до локтя)</td><td>10 минут</td><td>900 р.</td></tr>
+                        <tr><td>Руки (полностью)</td><td>15 минут</td><td>1200 р.</td></tr>
+                        <tr><td>Подмышки</td><td>3–8 минут</td><td>700 р.</td></tr>
+                        <tr><td>Зона над губой</td><td>3 минуты</td><td>350 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="service-content" data-service="wax" hidden>
+              <section class="service-content__block service-content__block--a" aria-labelledby="wax-intro">
+                <div class="container">
+                  <h2 id="wax-intro" class="service-content__title">Восковая эпиляция</h2>
+                  <p class="service-content__text">Восковая эпиляция — излюбленный способ удаления волос, которым женщины пользуются даже для самостоятельного домашнего применения. Универсальный и эффективный, он позволяет легко и надолго добиться совершенной гладкости кожи.</p>
+                  <p class="service-content__text">Наш салон, с первых дней специализирующийся на шугаринге, только теперь открыл этот метод депиляции. А все благодаря появлению по-настоящему качественного продукта для проведения восковой депиляции.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="wax-salon">
+                <div class="container">
+                  <h2 id="wax-salon" class="service-content__title">Восковая эпиляция в салоне</h2>
+                  <p class="service-content__text">В наших салонах применяется высококачественный инновационный пленочный воск, который имеет столько преимуществ, что вполне составляет конкуренцию даже депиляции сахаром!</p>
+                  <ul class="service-content__list service-content__list--advantages">
+                    <li>воск низкотемпературный, а значит, комфортен на коже и не оставляет ожогов</li>
+                    <li>воск полностью удаляет волос вместе с луковицей, сохраняя эффект депиляции надолго</li>
+                    <li>справляется даже с жесткими и очень короткими волосками</li>
+                    <li>подходит для чувствительных участков лица и интимных зон</li>
+                    <li>идеален для восковой депиляции сухой кожи, даже с хрупкими капиллярами</li>
+                  </ul>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="wax-prices">
+                <div class="container">
+                  <h2 id="wax-prices" class="service-content__title">Цены на восковую эпиляцию</h2>
+                  <h3 class="service-content__table-title">Восковая эпиляция для девушек</h3>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table" aria-label="Восковая эпиляция для девушек">
+                      <tbody>
+                        <tr><td>Голень</td><td>20–30 минут</td><td>800 р.</td></tr>
+                        <tr><td>Бедра</td><td>20–30 минут</td><td>800 р.</td></tr>
+                        <tr><td>Ноги полностью</td><td>30–40 минут</td><td>1500 р.</td></tr>
+                        <tr><td>Глубокое бикини</td><td>15–25 минут</td><td>1400 р.</td></tr>
+                        <tr><td>Классическое бикини</td><td>5–7 минут</td><td>300–600 р.</td></tr>
+                        <tr><td>Руки (до локтя)</td><td>10 минут</td><td>500 р.</td></tr>
+                        <tr><td>Руки (полностью)</td><td>15 минут</td><td>700 р.</td></tr>
+                        <tr><td>Подмышки</td><td>3–8 минут</td><td>500 р.</td></tr>
+                        <tr><td>Зона над губой</td><td>3 минуты</td><td>250 р.</td></tr>
+                        <tr><td>Зона подбородка</td><td>3 минуты</td><td>250 р.</td></tr>
+                        <tr><td>Зона бровей</td><td>10 минут</td><td>250 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h3 class="service-content__table-title">Комплексная восковая эпиляция для девушек</h3>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table service-content__table--two-cols" aria-label="Комплексная восковая эпиляция для девушек">
+                      <tbody>
+                        <tr><td>Сет 1: глубокое бикини + подмышки + голени</td><td>2400 р.</td></tr>
+                        <tr><td>Сет 2: глубокое бикини + подмышки + ноги полностью</td><td>2900 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <h3 class="service-content__table-title">Восковая эпиляция (мужская)</h3>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table service-content__table--two-cols" aria-label="Восковая эпиляция для мужчин">
+                      <tbody>
+                        <tr><td>Глубокое бикини (мужская)</td><td>1600 р.</td></tr>
+                        <tr><td>Спина (мужская)</td><td>500 р.</td></tr>
+                        <tr><td>Грудь (мужская)</td><td>500 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="service-content" data-service="wax-bikini" hidden>
+              <section class="service-content__block service-content__block--a" aria-labelledby="wax-bikini-intro">
+                <div class="container">
+                  <h2 id="wax-bikini-intro" class="service-content__title">Восковая эпиляция бикини</h2>
+                  <p class="service-content__text">Эпиляция бикини воском — давно известный и широко используемый метод избавления от волос в деликатной зоне. Благодаря восковой эпиляции бикини любая женщина обретает уверенность в своей ухоженности и привлекательности, а кожа радует чистотой и гладкостью аж до четырех недель!</p>
+                  <p class="service-content__text">Восковая эпиляция бикини — это один из самых действенных методов, безопасных для кожи и эффективных по длительности отсутствия волос. Волоски на интимных участках удаляются вместе с луковицей, благодаря чему со временем они растут все реже и тоньше.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="wax-bikini-salon">
+                <div class="container">
+                  <h2 id="wax-bikini-salon" class="service-content__title">В нашем салоне вы можете сделать:</h2>
+                  <ul class="service-content__list">
+                    <li>классическую эпиляцию бикини воском (обработка только видимых участков вдоль линии белья)</li>
+                    <li>глубокую эпиляцию воском (обработка полностью всей интимной зоны)</li>
+                  </ul>
+                  <p class="service-content__text">Восковая эпиляция бикини в нашем салоне проводится с помощью первоклассного пленочного воска, который:</p>
+                  <ul class="service-content__list service-content__list--advantages">
+                    <li>не обжигает, т.к. плавится при комфортной для кожи температуре</li>
+                    <li>справляется с плотными волосками, растущими в разных направлениях</li>
+                    <li>идеален для чувствительной интимной зоны</li>
+                  </ul>
+                  <p class="service-content__text">Просто запишитесь на сеанс, позаботьтесь о гигиене интимной зоны, и приезжайте! Наши мастера проведут процедуру быстро, профессионально, и гладкость вашей кожи надолго будет радовать вас!</p>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table" aria-label="Цены на восковую эпиляцию бикини">
+                      <tbody>
+                        <tr><td>Глубокое бикини</td><td>15–25 минут</td><td>1400 р.</td></tr>
+                        <tr><td>Классическое бикини</td><td>5–7 минут</td><td>300–600 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="service-content" data-service="armpits" hidden>
+              <section class="service-content__block service-content__block--a" aria-labelledby="armpits-intro">
+                <div class="container">
+                  <h2 id="armpits-intro" class="service-content__title">Эпиляция подмышек</h2>
+                  <p class="service-content__text">Эпиляция подмышек стала ежедневным ритуалом для каждой девушки. Так хочется быть женственной и уверенной в себе. А ведь кожа в этой области наиболее чувствительная, ежедневно травмируется бритьем и все равно через день уже не выглядит белоснежной. Как же привести область подмышек в безупречный вид надолго?</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="armpits-wax">
+                <div class="container">
+                  <h2 id="armpits-wax" class="service-content__title">Эпиляция подмышек воском</h2>
+                  <p class="service-content__text">Эпиляция воском подмышек позволяет в несколько движений удалить волосы вместе с корнем, оставив кожу идеально гладкой на несколько недель. Низкотемпературный воск исключительного качества, который применяется в нашем салоне, не оставит никакого раздражения, а сама процедура пройдет быстро и профессионально.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="armpits-shugaring">
+                <div class="container">
+                  <h2 id="armpits-shugaring" class="service-content__title">Эпиляция подмышек шугарингом</h2>
+                  <p class="service-content__text">Для шугаринга подмышек используется иной состав — сахарная паста, состоящая из исключительно натуральных компонентов. В дополнение паста оказывает отшелушивающий, ухаживающий эффект. Метод шугаринга абсолютно безопасен и не приводит к врастанию волос, делает кожу чистой и нежной надолго.</p>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table" aria-label="Цены на эпиляцию подмышек">
+                      <tbody>
+                        <tr><td>Шугаринг подмышек</td><td>3–8 минут</td><td>500 р.</td></tr>
+                        <tr><td>Полимер подмышек</td><td>3–8 минут</td><td>800 р.</td></tr>
+                        <tr><td>Эпиляция подмышек воском</td><td>3–8 минут</td><td>500 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="service-content" data-service="face" hidden>
+              <section class="service-content__block service-content__block--a" aria-labelledby="face-intro">
+                <div class="container">
+                  <h2 id="face-intro" class="service-content__title">Эпиляция на лице</h2>
+                  <p class="service-content__text">Эпиляция на лице, самой деликатной и видимой области тела, совершенно необходима тем женщинам, которых природа наделила заметными темными волосками над верхней губой или на подбородке. Нежной и тонкой коже лица требуется непременно качественный и бережный уход. Наши профессиональные мастера помогут вернуть вашему образу ухоженность и женственность.</p>
+                  <p class="service-content__label">В нашем салоне вы можете сделать:</p>
+                  <ul class="service-content__list">
+                    <li>эпиляцию над верхней губой (эпиляцию усиков)</li>
+                    <li>эпиляцию бровей</li>
+                    <li>эпиляцию подбородка</li>
+                    <li>эпиляцию других зон, которые вы хотели бы усовершенствовать</li>
+                  </ul>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="face-lip">
+                <div class="container">
+                  <h2 id="face-lip" class="service-content__title">Эпиляция над верхней губой</h2>
+                  <p class="service-content__text">Эпиляция верхней губы — наверное то, за чем чаще всего женщины обращаются в салон. Ведь немыслимо избавляться от нежелательных волосков здесь при помощи бритвы! Среди всего многообразия способов удаления волос на лице наш салон предлагает самые действенные из них, — а именно:</p>
+                  <ul class="service-content__list">
+                    <li>восковая эпиляция над губой</li>
+                    <li>сахарная эпиляция над губой (или шугаринг)</li>
+                  </ul>
+                  <p class="service-content__text">Технологии эти имеют массу преимуществ, а главное — дают желаемый результат, гладкую чистую кожу. О новых волосках можно будет забыть на несколько недель!</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="face-prices">
+                <div class="container">
+                  <h2 id="face-prices" class="service-content__title">Цены на эпиляцию лица</h2>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table" aria-label="Цены на эпиляцию лица">
+                      <tbody>
+                        <tr><td>Шугаринг над верхней губой (зона усиков)</td><td>3 минуты</td><td>250 р.</td></tr>
+                        <tr><td>Шугаринг подбородка</td><td>3 минуты</td><td>250 р.</td></tr>
+                        <tr><td>Полимер над верхней губой (зона усиков)</td><td>3 минуты</td><td>400 р.</td></tr>
+                        <tr><td>Восковая эпиляция над верхней губой (зона усиков)</td><td>3 минуты</td><td>250 р.</td></tr>
+                        <tr><td>Восковая эпиляция подбородка</td><td>3 минуты</td><td>250 р.</td></tr>
+                        <tr><td>Восковая эпиляция бровей</td><td>10 минут</td><td>250 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="face-advantages">
+                <div class="container">
+                  <h2 id="face-advantages" class="service-content__title">Эпиляция на лице: преимущества наших технологий</h2>
+                  <ul class="service-content__list service-content__list--advantages">
+                    <li><strong>Безопасность!</strong><br>Для шугаринга используется только натуральное средство — сахарная паста, а для восковой депиляции лица — низкотемпературный воск особого качества. Это самые щадящие и безопасные методы, идеально подходящие для чувствительной кожи лица.</li>
+                    <li><strong>Потрясающий эффект надолго!</strong><br>До трех недель можно быть уверенной в своей красоте, не беспокоясь о новых волосках. К тому же, со временем они станут расти все реже, тоньше и незаметнее.</li>
+                    <li><strong>Незаметность новых волос!</strong><br>Самый волнующий вопрос — будет ли заметен рост волос после удаления? Ведь это сразу бросится в глаза. Вы можете не беспокоиться! После эпиляции не бывает щетины как после бритвы, ведь волос удаляется с корнем. Волоски отрастают единично и неравномерно, спустя три недели.</li>
+                    <li><strong>Безболезненность!</strong><br>Благодаря тому, что сахарная паста и воск приобретают температуру тела, то болезненность процедуры сводится к минимуму. Однако вы можете смело попросить нанести обезболивающий крем.</li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+            <div class="service-content" data-service="legs" hidden>
+              <section class="service-content__block service-content__block--a" aria-labelledby="legs-intro">
+                <div class="container">
+                  <h2 id="legs-intro" class="service-content__title">Эпиляция ног</h2>
+                  <p class="service-content__text">Эпиляция ног дает потрясающий эффект когда женщина хочет придать своим ножкам гладкость и совершенную ухоженность. Не бритва, а только депиляция избавит от ненужных волосков быстро, практически безболезненно и главное надолго, ведь волос удаляется вместе с корнем. И наш салон предлагает вам следующий выбор процедур:</p>
+                  <ul class="service-content__list">
+                    <li>шугаринг ног</li>
+                    <li>полимерная эпиляция</li>
+                    <li>эпиляция ног воском</li>
+                  </ul>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="legs-prices">
+                <div class="container">
+                  <h2 id="legs-prices" class="service-content__title">Цены на эпиляцию ног</h2>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table" aria-label="Цены на эпиляцию ног">
+                      <tbody>
+                        <tr><td>Шугаринг голени</td><td>20–30 минут</td><td>900 р.</td></tr>
+                        <tr><td>Шугаринг бедер</td><td>20–30 минут</td><td>900 р.</td></tr>
+                        <tr><td>Шугаринг ног полностью</td><td>30–40 минут</td><td>1800 р.</td></tr>
+                        <tr><td>Полимер голени</td><td>20–30 минут</td><td>1500 р.</td></tr>
+                        <tr><td>Полимер бедер</td><td>20–30 минут</td><td>1500 р.</td></tr>
+                        <tr><td>Полимер ног полностью</td><td>30–40 минут</td><td>3000 р.</td></tr>
+                        <tr><td>Эпиляция голени воском</td><td>20–30 минут</td><td>800 р.</td></tr>
+                        <tr><td>Эпиляция бедер воском</td><td>20–30 минут</td><td>800 р.</td></tr>
+                        <tr><td>Эпиляция ног воском полностью</td><td>30–40 минут</td><td>1500 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="legs-wax">
+                <div class="container">
+                  <h2 id="legs-wax" class="service-content__title">Эпиляция ног воском</h2>
+                  <p class="service-content__text">Эпиляция ног воском необходима, если вы желаете удалить волосы на ногах на долгий срок. Салонная процедура позволит сделать это за несколько минут, а результат будет радовать вас аж до трех-четырех недель! Более того, только в нашем салоне используется воск высочайшего качества. Это совершенно инновационный продукт, который безопасен для кожи и нагревается при низких температурах.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="legs-shugaring">
+                <div class="container">
+                  <h2 id="legs-shugaring" class="service-content__title">Шугаринг ног</h2>
+                  <p class="service-content__text">Шугаринг ног — популярная процедура, более известная как сахарная депиляция. Паста представляет собой натуральный продукт, главный компонент которого — сахар. Он бережно удаляет волоски и ухаживает за кожей, оказывая отшелушивающий эффект. Настоящий SPA уход для ваших ножек! Минимум неприятных ощущений и отсутствие вросших волос. Ваша кожа будет сиять гладкостью и великолепием!</p>
+                </div>
+              </section>
+            </div>
+            <div class="service-content" data-service="arms" hidden>
+              <section class="service-content__block service-content__block--a" aria-labelledby="arms-intro">
+                <div class="container">
+                  <h2 id="arms-intro" class="service-content__title">Эпиляция рук</h2>
+                  <p class="service-content__text">Эпиляция рук — это то, о чем наверняка задумывались те из женщин, кому чересчур заметные, темные волосы на руках не позволяют ощущать себя уверенно и женственно. Использовать обычную бритву — не лучший способ, т.к. это сразу же спровоцирует рост новых, еще более темных и жестких волос. Чтобы ваша кожа стала чистой, изящной и ухоженной надолго, наш салон предлагает самые эффективные методы:</p>
+                  <ul class="service-content__list">
+                    <li>шугаринг рук</li>
+                    <li>эпиляция рук воском</li>
+                  </ul>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="arms-methods">
+                <div class="container">
+                  <h2 id="arms-methods" class="service-content__title">Шугаринг рук и эпиляция рук воском</h2>
+                  <p class="service-content__text">Для проведения шугаринга рук используется специальная сахарная паста, удаляющая полностью весь волосяной покров вместе с корнем, оставляя ваши ручки гладкими на целых три недели. Бережность, безопасность и натуральный состав — вот главные преимущества шугаринга.</p>
+                  <p class="service-content__text">Для восковой депиляции в нашем салоне используется продукт новейших разработок, высококачественный низкотемпературный воск. При восковой депиляции волосы также удаляются вместе с луковицей, при этом он абсолютно комфортен коже, и это обеспечивает продолжительный результат.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="arms-prices">
+                <div class="container">
+                  <h2 id="arms-prices" class="service-content__title">Цены на эпиляцию рук</h2>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table" aria-label="Цены на эпиляцию рук">
+                      <tbody>
+                        <tr><td>Шугаринг рук (до локтя)</td><td>10 минут</td><td>500 р.</td></tr>
+                        <tr><td>Шугаринг рук (полностью)</td><td>15 минут</td><td>800 р.</td></tr>
+                        <tr><td>Полимер рук (до локтя)</td><td>10 минут</td><td>600 р.</td></tr>
+                        <tr><td>Полимер рук (полностью)</td><td>15 минут</td><td>1000 р.</td></tr>
+                        <tr><td>Эпиляция рук воском (до локтя)</td><td>10 минут</td><td>500 р.</td></tr>
+                        <tr><td>Эпиляция рук воском (полностью)</td><td>15 минут</td><td>600 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="arms-aftercare">
+                <div class="container">
+                  <h2 id="arms-aftercare" class="service-content__title">Кожа после депиляции</h2>
+                  <ul class="service-content__list service-content__list--advantages">
+                    <li>регулярное отшелушивание поможет оставаться коже гладкой за счет обновления клеток</li>
+                    <li>ежедневное увлажнение кожи ваших ручек сделает ее мягкой и напитанной</li>
+                    <li>ежемесячное посещение салона для проведения депиляции обеспечит вам женственный и ухоженный вид</li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel-electro" class="services-panel" role="tabpanel" aria-labelledby="tab-electro" hidden>
+          <h2 class="services-panel__title">Электроэпиляция</h2>
+          <ul class="services-list" aria-label="Список услуг">
+            <li><button type="button" class="services-list__item" data-service="about">Об электроэпиляции</button></li>
+            <li><button type="button" class="services-list__item" data-service="bikini">Электроэпиляция бикини</button></li>
+            <li><button type="button" class="services-list__item" data-service="face">Электроэпиляция на лице</button></li>
+            <li><button type="button" class="services-list__item" data-service="armpits">Электроэпиляция подмышек</button></li>
+          </ul>
+          <div class="services-detail" id="service-detail-electro" aria-live="polite" hidden>
+            <div class="service-content" data-service="about" hidden>
+              <section class="service-content__block service-content__block--a" aria-labelledby="electro-about-intro">
+                <div class="container">
+                  <h2 id="electro-about-intro" class="service-content__title">Об электроэпиляции</h2>
+                  <p class="service-content__text">Электроэпиляция – это современная технология удаления нежелательной растительности, на 100% позволяющая удалить волосы навсегда. Это достигается путем воздействия электрических зарядов, которые направляются точечно в каждый фолликул через специальную иглу. Разряд тока разрушает волосяную луковицу, и волос больше не вырастает.</p>
+                  <ul class="service-content__list service-content__list--advantages">
+                    <li>Электроэпиляция прекращает рост волосяного покрова, а значит полностью избавляет от него.</li>
+                    <li>Методика применяется для избавления от волос любого цвета (темные или светлые, и даже седые) и толщины (пушковые или толстые), а также на загорелой или смуглой коже, тогда как при других технологиях перманентной депиляции это невозможно.</li>
+                    <li>Метод позволен даже на очень чувствительных участках, как например, зоны гениталий или подмышечных впадин.</li>
+                    <li>Технология не приводит к образованию на коже рубцов и шрамов.</li>
+                  </ul>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="electro-studio">
+                <div class="container">
+                  <h2 id="electro-studio" class="service-content__title">Студия электроэпиляции в Долгопрудном</h2>
+                  <p class="service-content__text">Студия электроэпиляции в г. Долгопрудный оказывает широкий спектр услуг по депиляции, а также электроэпиляции по недорогим ценам, качественно и профессионально.</p>
+                  <ul class="service-content__list service-content__list--advantages">
+                    <li><strong>Любая зона!</strong> В нашем салоне вы можете сделать перманентное удаление растительности на любых участках тела: бикини, на подмышках, на лице, а также на ногах, руках и других зонах.</li>
+                    <li><strong>Лучшая аппаратура!</strong> Мастера салона электроэпиляции применяют наиболее эффективный метод — Blend (Бленд), на одном из лучших аппаратов Depilplus. Также используются высококачественные иглы, обеспечивающие безопасность и эффективность на самом высоком уровне.</li>
+                    <li><strong>Безопасность!</strong> Сервис оказывают высокопрофессиональные мастера с многолетним опытом, гарантирующие безопасность процедуры использованием передовых средств дезинфекции и антисептиков при обработке кожи клиента.</li>
+                    <li><strong>Обезболивание!</strong> Для обеспечения максимального комфорта клиенту по его желанию оказывают обезболивание при электроэпиляции.</li>
+                    <li><strong>Удобство!</strong> Вы можете приехать в салон на электроэпиляцию в Долгопрудном (смотреть адрес, контакты и форму записи). Также вы можете заказать выезд мастера на дом для проведения электроэпиляции в домашних условиях.</li>
+                    <li><strong>Демократичные цены!</strong> Салон предлагает услуги электроэпиляции недорого. Доступные цены на электроэпиляцию – для того, чтобы каждая могла позволить себе быть красивой!</li>
+                  </ul>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="electro-prices">
+                <div class="container">
+                  <h2 id="electro-prices" class="service-content__title">Цены на электроэпиляцию</h2>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table service-content__table--two-cols" aria-label="Цены на электроэпиляцию">
+                      <tbody>
+                        <tr><td>Лицо, область бикини и подмышечных впадин</td><td>46 р./минута</td></tr>
+                        <tr><td>При опоздании более чем на 10 минут каждая последующая минута опоздания оплачивается как минута процедуры</td><td>46 р./минута</td></tr>
+                        <tr><td>Иголка для электроэпиляции</td><td>200 р.</td></tr>
+                        <tr><td>Обезболивание (Ультракаин/Ультракаин форте, 1 ампула)</td><td>300 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="electro-studio-how">
+                <div class="container">
+                  <h2 id="electro-studio-how" class="service-content__title">Электроэпиляция в студии</h2>
+                  <p class="service-content__text">Важно понимать, что во время первого сеанса будут удалены только те волоски, находящиеся в активной фазе роста, — а их на различных участках тела от 20% до 50%. Разрушенный фолликул больше не восстановится, зато соседние спящие корни активизируют свой рост. Поэтому для полного избавления от нежелательной растительности требуется несколько повторов.</p>
+                  <p class="service-content__text">Сколько удалений потребуется именно вам, обусловлено гормональной и генетической предрасположенностью, а также количеством спящих фолликулов и волосиков, еще не выросших после применения других видов депиляции. Очень важно между сеансами электропроцедуры не удалять волосяной покров никакими иными способами.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="electro-types">
+                <div class="container">
+                  <h2 id="electro-types" class="service-content__title">Виды электроэпиляции</h2>
+                  <p class="service-content__text">В зависимости от применяемого вида тока разделяют следующие виды:</p>
+                  <ul class="service-content__list service-content__list--advantages">
+                    <li><strong>Электролиз.</strong> Это депиляция с помощью постоянного тока, под влиянием которого на игле выделяются из воды ионы гидроксила, и они, в свою очередь, разрушают волосяной корень химически. Электролиз требует длительного воздействия на луковицу (до 3-х минут).</li>
+                    <li><strong>Термолиз.</strong> Для термического разрушения волосяных корней употребляется максимальный электрический импульс. При данной технике наблюдается максимальная болезненность, а также низкая эффективность на сухой коже.</li>
+                    <li><strong>Флеш.</strong> Вводится импульс с высокой частотностью. Методика делает электроудаление максимально быстрым, однако непродуктивен на искривленных фолликулах.</li>
+                    <li><strong>Бленд-метод.</strong> Одновременное действие на луковицу термолиза и электролиза. Самый эффективный метод, следы малозаметны и быстро заживают.</li>
+                  </ul>
+                  <p class="service-content__text">В нашем салоне электроэпиляции в Долгопрудном используется бленд-метод на передовом оборудовании испанского производства Depilplus.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="electro-care">
+                <div class="container">
+                  <h2 id="electro-care" class="service-content__title">Рекомендации по уходу</h2>
+                  <p class="service-content__text">В течение последующих 24 часов после приема запрещается взаимодействие эпилированного участка с водой, а также с любыми косметическими или бытовыми средствами, кроме средств дезинфекции, рекомендованных мастером. Также нельзя подвергать данную зону солнечному облучению.</p>
+                  <p class="service-content__text">После электросеанса на месте выведенных волосков появляются красные точки, которые в течение двух дней преобразуются в корочки. Это абсолютно нормальное явление, при соблюдении правил ухода за кожей оно пройдет через 10 дней.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="electro-contraindications">
+                <div class="container">
+                  <h2 id="electro-contraindications" class="service-content__title">Противопоказания для электроэпиляции</h2>
+                  <ul class="service-content__list">
+                    <li>дерматологические заболевания</li>
+                    <li>сердечно-сосудистые болезни, заболевания вен</li>
+                    <li>наличие кардиостимулятора</li>
+                    <li>сахарный диабет</li>
+                    <li>онкология</li>
+                    <li>беременность</li>
+                    <li>эпилепсия</li>
+                  </ul>
+                  <p class="service-content__text">При наличии перечисленных недугов противопоказано электрическое взаимодействие. В данном случае проконсультируйтесь с мастером, подойдет ли вам в качестве альтернативы депиляция сахарной пастой.</p>
+                </div>
+              </section>
+            </div>
+            <div class="service-content" data-service="bikini" hidden>
+              <section class="service-content__block service-content__block--a" aria-labelledby="electro-bikini-intro">
+                <div class="container">
+                  <h2 id="electro-bikini-intro" class="service-content__title">Электроэпиляция бикини</h2>
+                  <p class="service-content__text">Электроэпиляция бикини приходит на выручку тем девушкам, кто желает навсегда расстаться с излишней растительностью в деликатной зоне. Эта процедура позволит обрести ухоженность и абсолютную гладкость в интимной области.</p>
+                  <p class="service-content__text">Технология электроэпиляции бикини состоит в разрушении волосяного корня под воздействием электрического разряда, который проходит через тончайшую иглу, вводимую в фолликул. В итоге новые волоски прекращают свой рост. Это сложная методика, и только она подходит для перманентного удаления волос в области глубокого бикини.</p>
+                  <p class="service-content__text">Исследования показали, что в интимной зоне в активной фазе роста находится примерно 50% всех волосков. Это значит, что за один подход будет удалена лишь часть растительности, и для полной обработки потребуется ряд повторов. На приеме мастер определит примерное количество сеансов.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="electro-bikini-deep">
+                <div class="container">
+                  <h2 id="electro-bikini-deep" class="service-content__title">Электроэпиляция глубокого бикини</h2>
+                  <p class="service-content__text">Если вы мечтаете избавиться от растительности полностью от лобка до ягодиц, то электроэпиляция глубокого бикини делает это возможным и гарантированно эффективным. Для обработки столь чувствительной области особое значение приобретает качество аппаратуры и мастерство специалиста, а также обезболивание, которое обеспечит достойный комфорт.</p>
+                  <p class="service-content__text">В нашей студии гарантируется полная безопасность и высокое качество исполнения электроэпиляции. Используется новейший импортный аппарат Depilplus с применением индивидуальных высокопрочных игл.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="electro-bikini-prices">
+                <div class="container">
+                  <h2 id="electro-bikini-prices" class="service-content__title">Цены на электроэпиляцию</h2>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table service-content__table--two-cols" aria-label="Цены на электроэпиляцию">
+                      <tbody>
+                        <tr><td>Лицо, область бикини и подмышечных впадин</td><td>46 р./минута</td></tr>
+                        <tr><td>При опоздании более чем на 10 минут каждая последующая минута опоздания оплачивается как минута процедуры</td><td>46 р./минута</td></tr>
+                        <tr><td>Иголка для электроэпиляции</td><td>200 р.</td></tr>
+                        <tr><td>Обезболивание (Ультракаин/Ультракаин форте, 1 ампула)</td><td>300 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="service-content" data-service="face" hidden>
+              <section class="service-content__block service-content__block--a" aria-labelledby="electro-face-intro">
+                <div class="container">
+                  <h2 id="electro-face-intro" class="service-content__title">Электроэпиляция на лице</h2>
+                  <p class="service-content__text">Удаление волос на лице навсегда – наверняка это желание посещает каждую девушку, которая вынуждена регулярно депилировать зону над губой или брови.</p>
+                  <p class="service-content__text">Электроэпиляция на лице – почти единственный метод перманентного удаления волос, возможный для применения на чувствительной коже лица, особенно если на нем растут густые темные волоски.</p>
+                  <p class="service-content__text">Суть методики заключена в точечной деструкции волосяных фолликулов под действием электротока. Она проводится на специальном аппарате, к которому подключается игла, вводимая в фолликул. Таким образом, достигается удаление волос на лице навсегда.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="electro-face-studio">
+                <div class="container">
+                  <h2 id="electro-face-studio" class="service-content__title">Электроэпиляция на лице в студии</h2>
+                  <p class="service-content__text">В нашей студии все процедуры удаления проводятся на передовом аппарате Depilplus с использованием наиболее эффективного метода Бленд. Обезболивание и качественная дезинфекция обеспечит вам полную безопасность и комфорт. Вы навсегда перестанете беспокоиться за свой внешний вид – спустя несколько дней после удаления от электровоздействия не останется и следа!</p>
+                  <p class="service-content__label">Обрабатываются любые участки, самые популярные это:</p>
+                  <ul class="service-content__list">
+                    <li>над верхней губой (зона усиков)</li>
+                    <li>подбородок</li>
+                    <li>брови</li>
+                  </ul>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--a" aria-labelledby="electro-face-prices">
+                <div class="container">
+                  <h2 id="electro-face-prices" class="service-content__title">Цены на электроэпиляцию</h2>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table service-content__table--two-cols" aria-label="Цены на электроэпиляцию">
+                      <tbody>
+                        <tr><td>Лицо, область бикини и подмышечных впадин</td><td>46 р./минута</td></tr>
+                        <tr><td>При опоздании более чем на 10 минут каждая последующая минута опоздания оплачивается как минута процедуры</td><td>46 р./минута</td></tr>
+                        <tr><td>Иголка для электроэпиляции</td><td>200 р.</td></tr>
+                        <tr><td>Обезболивание (Ультракаин/Ультракаин форте, 1 ампула)</td><td>300 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="electro-face-any">
+                <div class="container">
+                  <h2 id="electro-face-any" class="service-content__title">Электроэпиляция на лице</h2>
+                  <p class="service-content__text">Электрическая депиляция подходит любому цвету и типу волос. Если вас беспокоят светлые пушковые малозаметные волоски, то вы можете попробовать для начала шугаринг. Если же вы настроены на радикальное удаление нежелательной растительности, которая значительно портит вашу внешность, то электроэпиляция – это наилучший из методов, который навсегда решит вашу проблему!</p>
+                  <p class="service-content__text">Электроэпиляция на лице выполняется в несколько коротких сеансов, в течение которых удаляется небольшое количество волос. Это гарантирует максимально плавное и малозаметное заживление, поскольку лицо – самая видимая часть тела.</p>
+                </div>
+              </section>
+            </div>
+            <div class="service-content" data-service="armpits" hidden>
+              <section class="service-content__block service-content__block--a" aria-labelledby="electro-armpits-intro">
+                <div class="container">
+                  <h2 id="electro-armpits-intro" class="service-content__title">Электроэпиляция подмышек</h2>
+                  <p class="service-content__text">Электроэпиляция подмышек – почти единственная методика перманентной депиляции, идеально подходящая столь чувствительному участку, как кожа подмышечных впадин. Это потрясающий вариант для девушек, мечтающих забыть о каждодневном бритье навсегда!</p>
+                  <p class="service-content__text">Депиляция электрическим током – это инновационный метод депиляции, при котором полностью разрушаются корни волос. Эффект – прекращение роста волос и совершенно чистая гладкая кожа.</p>
+                  <p class="service-content__text">Обработать всю зону одной подмышечной впадины в среднем составляет два часа. Число и толщина волосков у каждой женщины индивидуальны, поэтому длительность сеанса может отличаться.</p>
+                  <p class="service-content__text">Во время электропроцедуры убираются только видимые отросшие волоски, а из «спящих» луковиц волосы начнут расти позднее. За несколько повторов электроэпиляции подмышек вы получите желаемую нежность и бархатистость.</p>
+                </div>
+              </section>
+              <section class="service-content__block service-content__block--b" aria-labelledby="electro-armpits-studio">
+                <div class="container">
+                  <h2 id="electro-armpits-studio" class="service-content__title">Электроэпиляция подмышек в студии</h2>
+                  <p class="service-content__text">В нашей студии электроудаление выполняется на высококачественной аппаратуре, гарантирующей эффективность и безопасность.</p>
+                  <div class="service-content__table-wrap">
+                    <table class="service-content__table service-content__table--two-cols" aria-label="Цены на электроэпиляцию">
+                      <tbody>
+                        <tr><td>Лицо, область бикини и подмышечных впадин</td><td>46 р./минута</td></tr>
+                        <tr><td>При опоздании более чем на 10 минут каждая последующая минута опоздания оплачивается как минута процедуры</td><td>46 р./минута</td></tr>
+                        <tr><td>Иголка для электроэпиляции</td><td>200 р.</td></tr>
+                        <tr><td>Обезболивание (Ультракаин/Ультракаин форте, 1 ампула)</td><td>300 р.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <div id="panel-prices" class="services-panel" role="tabpanel" aria-labelledby="tab-prices" hidden>
+          <h2 class="services-panel__title">Цены</h2>
+          <div class="services-detail" aria-live="polite">
+            <section class="service-content__block service-content__block--a" aria-labelledby="prices-shugaring">
+              <div class="container">
+                <h2 id="prices-shugaring" class="service-content__title">Шугаринг</h2>
+                <h3 class="service-content__table-title">Цены на шугаринг</h3>
+                <div class="service-content__table-wrap">
+                  <table class="service-content__table" aria-label="Цены на шугаринг">
+                    <tbody>
+                      <tr><td>Голень</td><td>20–30 минут</td><td>1000 р.</td></tr>
+                      <tr><td>Бедра</td><td>20–30 минут</td><td>1100 р.</td></tr>
+                      <tr><td>Задняя поверхность бедра и ягодицы</td><td>20–30 минут</td><td>600 р.</td></tr>
+                      <tr><td>Ноги полностью</td><td>30–40 минут</td><td>2000 р.</td></tr>
+                      <tr><td>Классическое бикини</td><td>5–7 минут</td><td>1000 р.</td></tr>
+                      <tr><td>Глубокое бикини</td><td>15–25 минут</td><td>1800 р.</td></tr>
+                      <tr><td>Ягодицы</td><td>5–7 минут</td><td>600 р.</td></tr>
+                      <tr><td>Поясница</td><td>5–7 минут</td><td>500 р.</td></tr>
+                      <tr><td>Руки (до локтя)</td><td>10 минут</td><td>800 р.</td></tr>
+                      <tr><td>Руки (полностью)</td><td>15 минут</td><td>1000 р.</td></tr>
+                      <tr><td>Подмышки</td><td>3–8 минут</td><td>600/<br>700 р.</td></tr>
+                      <tr><td>Зона над губой</td><td>3 минуты</td><td>200 р.</td></tr>
+                      <tr><td>Зона подбородка</td><td>3 минуты</td><td>200 р.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h3 class="service-content__table-title">Цены на шугаринг комплекс</h3>
+                <div class="service-content__table-wrap">
+                  <table class="service-content__table service-content__table--two-cols" aria-label="Цены на шугаринг комплекс">
+                    <tbody>
+                      <tr><td>Сет 1: глубокое бикини + подмышки</td><td>2100 р.</td></tr>
+                      <tr><td>Сет 2: глубокое бикини + голени/бедра</td><td>2600 р.</td></tr>
+                      <tr><td>Сет 3: глубокое бикини + подмышки + голени/бедра</td><td>3000 р.</td></tr>
+                      <tr><td>Сет 4: глубокое бикини + подмышки + ноги полностью</td><td>3800 р.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+            <section class="service-content__block service-content__block--b" aria-labelledby="prices-polymer">
+              <div class="container">
+                <h2 id="prices-polymer" class="service-content__title">Полимерная эпиляция</h2>
+                <h3 class="service-content__table-title">Цены на полимерную эпиляцию</h3>
+                <div class="service-content__table-wrap">
+                  <table class="service-content__table" aria-label="Цены на полимерную эпиляцию">
+                    <tbody>
+                      <tr><td>Голень</td><td>20–30 минут</td><td>1500 р.</td></tr>
+                      <tr><td>Бедра</td><td>20–30 минут</td><td>1500 р.</td></tr>
+                      <tr><td>Ягодицы</td><td>30–40 минут</td><td>1000 р.</td></tr>
+                      <tr><td>Поясница</td><td>30–40 минут</td><td>800 р.</td></tr>
+                      <tr><td>Ноги полностью</td><td>30–40 минут</td><td>3000 р.</td></tr>
+                      <tr><td>Глубокое бикини</td><td>15–25 минут</td><td>2000 р.</td></tr>
+                      <tr><td>Классическое бикини</td><td>15–25 минут</td><td>2000 р.</td></tr>
+                      <tr><td>Руки (до локтя)</td><td>10 минут</td><td>900 р.</td></tr>
+                      <tr><td>Руки (полностью)</td><td>15 минут</td><td>1200 р.</td></tr>
+                      <tr><td>Подмышки</td><td>3–8 минут</td><td>700 р.</td></tr>
+                      <tr><td>Зона над губой</td><td>3 минуты</td><td>350 р.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+            <section class="service-content__block service-content__block--a" aria-labelledby="prices-wax">
+              <div class="container">
+                <h2 id="prices-wax" class="service-content__title">Восковая эпиляция</h2>
+                <h3 class="service-content__table-title">Восковая эпиляция для девушек</h3>
+                <div class="service-content__table-wrap">
+                  <table class="service-content__table" aria-label="Восковая эпиляция для девушек">
+                    <tbody>
+                      <tr><td>Голень</td><td>20–30 минут</td><td>800 р.</td></tr>
+                      <tr><td>Бедра</td><td>20–30 минут</td><td>800 р.</td></tr>
+                      <tr><td>Ноги полностью</td><td>30–40 минут</td><td>1500 р.</td></tr>
+                      <tr><td>Глубокое бикини</td><td>15–25 минут</td><td>1400 р.</td></tr>
+                      <tr><td>Классическое бикини</td><td>5–7 минут</td><td>300–600 р.</td></tr>
+                      <tr><td>Руки (до локтя)</td><td>10 минут</td><td>500 р.</td></tr>
+                      <tr><td>Руки (полностью)</td><td>15 минут</td><td>700 р.</td></tr>
+                      <tr><td>Подмышки</td><td>3–8 минут</td><td>500 р.</td></tr>
+                      <tr><td>Зона над губой</td><td>3 минуты</td><td>250 р.</td></tr>
+                      <tr><td>Зона подбородка</td><td>3 минуты</td><td>250 р.</td></tr>
+                      <tr><td>Зона бровей</td><td>10 минут</td><td>250 р.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h3 class="service-content__table-title">Комплексная восковая эпиляция для девушек</h3>
+                <div class="service-content__table-wrap">
+                  <table class="service-content__table service-content__table--two-cols" aria-label="Комплексная восковая эпиляция для девушек">
+                    <tbody>
+                      <tr><td>Сет 1: глубокое бикини + подмышки + голени</td><td>2400 р.</td></tr>
+                      <tr><td>Сет 2: глубокое бикини + подмышки + ноги полностью</td><td>2900 р.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h3 class="service-content__table-title">Восковая эпиляция (мужская)</h3>
+                <div class="service-content__table-wrap">
+                  <table class="service-content__table service-content__table--two-cols" aria-label="Восковая эпиляция для мужчин">
+                    <tbody>
+                      <tr><td>Глубокое бикини (мужская)</td><td>1600 р.</td></tr>
+                      <tr><td>Спина (мужская)</td><td>500 р.</td></tr>
+                      <tr><td>Грудь (мужская)</td><td>500 р.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+            <section class="service-content__block service-content__block--b" aria-labelledby="prices-electro">
+              <div class="container">
+                <h2 id="prices-electro" class="service-content__title">Электроэпиляция</h2>
+                <div class="service-content__table-wrap">
+                  <table class="service-content__table service-content__table--two-cols" aria-label="Цены на электроэпиляцию">
+                    <tbody>
+                      <tr><td>Лицо, область бикини и подмышечных впадин</td><td>46 р./минута</td></tr>
+                      <tr><td>При опоздании более чем на 10 минут каждая последующая минута опоздания оплачивается как минута процедуры</td><td>46 р./минута</td></tr>
+                      <tr><td>Иголка для электроэпиляции</td><td>200 р.</td></tr>
+                      <tr><td>Обезболивание (Ультракаин/Ультракаин форте, 1 ампула)</td><td>300 р.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner container">
+      <p class="footer__copy">&copy; Студия эпиляции Елены Гончаровой</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/services.js"></script>
+</body>
+</html>
