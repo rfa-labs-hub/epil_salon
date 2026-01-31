@@ -7,17 +7,21 @@
   'use strict';
 
   const HEADER_HEIGHT = 84;
-  const TAB_IDS = ['epilation', 'electro', 'prices'];
+  const TAB_IDS = ['epilation', 'electro', 'laminating', 'prices'];
   const tabs = {
     epilation: document.getElementById('tab-epilation'),
     electro: document.getElementById('tab-electro'),
+    laminating: document.getElementById('tab-laminating'),
     prices: document.getElementById('tab-prices')
   };
   const panels = {
     epilation: document.getElementById('panel-epilation'),
     electro: document.getElementById('panel-electro'),
+    laminating: document.getElementById('panel-laminating'),
     prices: document.getElementById('panel-prices')
   };
+  const worksGallerySection = document.getElementById('works-gallery-section');
+  const resniGallerySection = document.getElementById('resni-gallery-section');
 
   function switchTo(cat) {
     if (!TAB_IDS.includes(cat)) cat = 'epilation';
@@ -32,6 +36,10 @@
         panel.hidden = id !== cat;
       }
     });
+    if (worksGallerySection && resniGallerySection) {
+      worksGallerySection.hidden = cat === 'laminating';
+      resniGallerySection.hidden = cat !== 'laminating';
+    }
     if (history.replaceState) {
       history.replaceState(null, '', '#' + cat);
     } else {
@@ -147,17 +155,19 @@
     });
   });
 
-  // Галерея работ: открытие/закрытие модального окна, переключение фото, свайпы
+  // Галерея работ: открытие/закрытие модального окна, переключение фото, свайпы (works + resni)
   var worksModal = document.getElementById('works-modal');
   var worksModalImg = document.getElementById('works-modal-img');
   var worksModalClose = worksModal && worksModal.querySelector('.works-modal__close');
   var worksModalBackdrop = worksModal && worksModal.querySelector('.works-modal__backdrop');
   var worksModalSwipeArea = document.getElementById('works-modal-swipe-area');
-  var worksGalleryItems = document.querySelectorAll('.works-gallery__item');
+  var worksGalleryItems = document.querySelectorAll('#works-gallery-list .works-gallery__item');
+  var resniGalleryItems = document.querySelectorAll('#resni-gallery-list .works-gallery__item');
+  var currentModalGalleryItems = worksGalleryItems;
   var worksModalCurrentIndex = 0;
 
   function getWorksItemSrcAlt(index) {
-    var btn = worksGalleryItems[index];
+    var btn = currentModalGalleryItems[index];
     if (!btn) return { src: '', alt: '' };
     return {
       src: btn.getAttribute('data-src') || '',
@@ -166,24 +176,27 @@
   }
 
   function updateWorksModalImage(index) {
-    if (!worksModalImg || index < 0 || index >= worksGalleryItems.length) return;
+    var len = currentModalGalleryItems.length;
+    if (!worksModalImg || index < 0 || index >= len) return;
     worksModalCurrentIndex = index;
     var data = getWorksItemSrcAlt(index);
     worksModalImg.src = data.src;
     worksModalImg.alt = data.alt;
   }
 
-  function openWorksModal(src, alt, index) {
+  function openWorksModal(src, alt, index, items) {
     if (!worksModal || !worksModalImg) return;
-    if (typeof index === 'number' && index >= 0 && index < worksGalleryItems.length) {
+    currentModalGalleryItems = items || worksGalleryItems;
+    var len = currentModalGalleryItems.length;
+    if (typeof index === 'number' && index >= 0 && index < len) {
       worksModalCurrentIndex = index;
       updateWorksModalImage(index);
     } else {
       worksModalImg.src = src;
       worksModalImg.alt = alt;
       worksModalCurrentIndex = 0;
-      for (var i = 0; i < worksGalleryItems.length; i++) {
-        if (worksGalleryItems[i].getAttribute('data-src') === src) {
+      for (var i = 0; i < len; i++) {
+        if (currentModalGalleryItems[i].getAttribute('data-src') === src) {
           worksModalCurrentIndex = i;
           break;
         }
@@ -209,20 +222,27 @@
   }
 
   function showWorksNext() {
-    if (worksModalCurrentIndex < worksGalleryItems.length - 1) {
+    var len = currentModalGalleryItems ? currentModalGalleryItems.length : 0;
+    if (worksModalCurrentIndex < len - 1) {
       updateWorksModalImage(worksModalCurrentIndex + 1);
     }
   }
 
-  if (worksGalleryItems.length) {
-    worksGalleryItems.forEach(function (btn, index) {
-      btn.addEventListener('click', function () {
-        var src = btn.getAttribute('data-src');
-        var alt = btn.getAttribute('data-alt') || '';
-        if (src) openWorksModal(src, alt, index);
-      });
-    });
+  function bindGalleryClicks(list, items) {
+    if (!items || !items.length) return;
+    for (var i = 0; i < items.length; i++) {
+      (function (btn, index) {
+        btn.addEventListener('click', function () {
+          var src = btn.getAttribute('data-src');
+          var alt = btn.getAttribute('data-alt') || '';
+          if (src) openWorksModal(src, alt, index, items);
+        });
+      })(items[i], i);
+    }
   }
+
+  bindGalleryClicks(document.getElementById('works-gallery-list'), worksGalleryItems);
+  bindGalleryClicks(document.getElementById('resni-gallery-list'), resniGalleryItems);
 
   if (worksModalBackdrop) {
     worksModalBackdrop.addEventListener('click', closeWorksModal);

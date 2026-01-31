@@ -1421,6 +1421,15 @@ main {
   margin-bottom: var(--space-sm);
 }
 
+.service-content__list--numbered {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+.service-content__list--numbered li {
+  margin-bottom: var(--space-sm);
+}
+
 .service-content__table-title {
   font-family: var(--font-heading);
   font-weight: 600;
