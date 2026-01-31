@@ -540,11 +540,33 @@ main {
 /* Hero
    -------------------------------------------------------------------------- */
 .hero {
+  position: relative;
   padding: var(--space-2xl) 0;
-  background: var(--color-block-a);
+  min-height: 420px;
+  background-image: url("../images/hero.jfif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.5);
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    min-height: 480px;
+    background-position: center center;
+  }
 }
 
 .hero__inner {
+  position: relative;
+  z-index: 1;
   max-width: 38rem;
   margin-left: auto;
   margin-right: auto;
@@ -558,15 +580,17 @@ main {
   font-weight: 600;
   font-size: clamp(1.75rem, 4.5vw, 2.25rem);
   margin: 0;
-  color: var(--color-text);
+  color: #f5f5f5;
   line-height: 1.25;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .hero__lead {
   margin: 0;
   font-size: 1rem;
-  color: var(--color-text-muted);
+  color: rgba(245, 245, 245, 0.95);
   line-height: 1.55;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 .hero__methods {
@@ -574,8 +598,9 @@ main {
   padding: 0;
   list-style-type: disc;
   font-size: 0.95rem;
-  color: var(--color-text);
+  color: #f5f5f5;
   line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 .hero__methods li {
@@ -590,8 +615,9 @@ main {
 .hero__text {
   margin: 0;
   font-size: 1rem;
-  color: var(--color-text);
+  color: rgba(245, 245, 245, 0.95);
   line-height: 1.65;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
 /* Advantages
