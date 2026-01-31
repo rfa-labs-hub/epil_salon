@@ -572,20 +572,19 @@ main {
 .hero__methods {
   margin: 0;
   padding: 0;
-  list-style: none;
+  list-style-type: disc;
   font-size: 0.95rem;
   color: var(--color-text);
   line-height: 1.6;
 }
 
 .hero__methods li {
-  display: inline;
+  display: list-item;
+  margin-left: 1.25em;
 }
 
-.hero__methods li:not(:last-child)::after {
-  content: " · ";
-  color: var(--color-text-muted);
-  font-weight: 400;
+.hero__methods li:not(:last-child) {
+  margin-bottom: 0.25em;
 }
 
 .hero__text {
@@ -867,6 +866,179 @@ main {
   border: none;
 }
 
+/* Works gallery (страница услуг — каталог работ)
+   -------------------------------------------------------------------------- */
+.works-gallery {
+  padding: var(--space-2xl) 0;
+  background: var(--color-block-b);
+}
+
+.works-gallery__inner {
+  max-width: var(--container-wide);
+}
+
+.works-gallery .section-title {
+  margin-bottom: var(--space-xl);
+}
+
+.works-gallery__list {
+  list-style: none;
+  margin: 0;
+  padding: 0 var(--space-md) var(--space-sm);
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-md);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.works-gallery__list::-webkit-scrollbar {
+  display: none;
+}
+
+.works-gallery__list li {
+  margin: 0;
+  flex: 0 0 auto;
+  width: 200px;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 600px) {
+  .works-gallery__list li {
+    width: 260px;
+  }
+}
+
+.works-gallery__item {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: box-shadow var(--transition), transform var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.works-gallery__item:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.works-gallery__item:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.works-gallery__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  pointer-events: none;
+}
+
+/* Модальное окно галереи
+   -------------------------------------------------------------------------- */
+.works-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  box-sizing: border-box;
+}
+
+.works-modal[hidden] {
+  display: none;
+}
+
+.works-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.85);
+  cursor: pointer;
+}
+
+.works-modal__box {
+  position: relative;
+  max-width: 95vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.works-modal__img {
+  max-width: 100%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+.works-modal__close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  background: rgba(232, 230, 228, 0.95);
+  color: var(--color-text);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), color var(--transition);
+  z-index: 2;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.works-modal__close:hover {
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+
+.works-modal__close::before,
+.works-modal__close::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+}
+
+.works-modal__close::before {
+  transform: rotate(45deg);
+}
+
+.works-modal__close::after {
+  transform: rotate(-45deg);
+}
+
+.works-modal__close:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
 /* Footer
    -------------------------------------------------------------------------- */
 .footer {
@@ -916,6 +1088,101 @@ main {
 .page-services main {
   padding-top: var(--header-h);
   min-height: 60vh;
+}
+
+/* ==========================================================================
+   Страница отзывов
+   ========================================================================== */
+.page-reviews main {
+  padding-top: var(--header-h);
+  min-height: 60vh;
+}
+
+.reviews {
+  padding: var(--space-xl) 0 var(--space-2xl);
+  background: var(--color-block-a);
+}
+
+.reviews__inner {
+  max-width: var(--container-wide);
+}
+
+.reviews .section-title {
+  margin-bottom: var(--space-sm);
+}
+
+.reviews__lead {
+  margin: 0 0 var(--space-xl);
+  text-align: center;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
+.reviews__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+.reviews__list li {
+  margin: 0;
+}
+
+.review-card {
+  padding: var(--space-lg);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  min-height: 0;
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.review-card:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-accent);
+}
+
+.review-card__text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.review-card__author {
+  margin: 0;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text);
+  font-style: normal;
+}
+
+@media (min-width: 600px) {
+  .reviews__list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+@media (min-width: 900px) {
+  .reviews__list {
+    gap: var(--space-xl);
+  }
+
+  .review-card {
+    padding: var(--space-lg) var(--space-xl);
+  }
 }
 
 .services-page {
