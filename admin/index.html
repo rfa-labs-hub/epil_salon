@@ -34,21 +34,6 @@
       <h1 class="card__title">Подключение к GitHub</h1>
       <p class="card__lead">Это нужно сделать один раз. После этого вы сможете менять цены и фото на сайте.</p>
 
-      <details class="howto" open>
-        <summary class="howto__summary">Как получить ключ доступа GitHub (показать инструкцию)</summary>
-        <ol class="howto__list">
-          <li>Откройте <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener">страницу создания ключа</a> (войдите в свой аккаунт GitHub).</li>
-          <li>Нажмите кнопку <strong>«Generate new token»</strong>.</li>
-          <li>В поле <strong>Token name</strong> впишите: <code>admin sugarepil</code>.</li>
-          <li>В <strong>Expiration</strong> выберите срок (например, «No expiration» или «1 year»).</li>
-          <li>В <strong>Repository access</strong> выберите <em>Only select repositories</em> и в выпадающем списке найдите <code>rfa-labs-hub/epil_salon</code>.</li>
-          <li>В <strong>Repository permissions</strong> найдите строку <strong>Contents</strong> и поставьте <em>Read and write</em>.</li>
-          <li>Прокрутите вниз и нажмите <strong>Generate token</strong>.</li>
-          <li>Скопируйте получившийся ключ (он начинается на <code>github_pat_…</code>) и вставьте в поле ниже.</li>
-        </ol>
-        <p class="howto__note">Ключ сохранится только в этом браузере и нигде больше. Никто, кроме вас, его не увидит.</p>
-      </details>
-
       <form id="setup-form" class="form" autocomplete="off">
         <label class="field">
           <span class="field__label">Ключ доступа GitHub</span>
