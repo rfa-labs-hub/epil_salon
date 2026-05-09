@@ -253,17 +253,14 @@
     const card = el('div', { class: 'editor-card', 'data-open': idx === 0 ? 'true' : 'false' });
     editor.el = card;
 
+    // Подбираем человекочитаемый заголовок: если есть отдельная подкатегория
+    // (например, «Комплексы (сеты)» под «Шугаринг») — показываем её, иначе категорию
+    const headingText = (editor.title && editor.title !== editor.category)
+      ? editor.category + ' — ' + editor.title
+      : editor.category;
     const titleNode = el('div', { class: 'editor-card__title' }, [
-      document.createTextNode(editor.category),
-      el('span', { class: 'editor-card__title-sub', text: editor.title })
+      document.createTextNode(headingText)
     ]);
-    if (editor.copies > 1) {
-      titleNode.appendChild(el('span', {
-        class: 'editor-card__title-sub',
-        title: 'Эта таблица показывается в нескольких местах сайта',
-        text: '×' + editor.copies + ' копий'
-      }));
-    }
 
     const dirtyBadge = el('span', { class: 'editor-card__dirty-badge', text: 'есть изменения' });
 
@@ -446,7 +443,7 @@
   // ---------- Загрузка / сохранение --------------------------------------
 
   async function reload(force) {
-    window.AdminUI.showLoader('Загружаем services.html…');
+    window.AdminUI.showLoader('Загружаем данные сайта…');
     try {
       const file = await window.GH.getTextFile(FILE, { force: !!force });
       _doc = new DOMParser().parseFromString(file.content, 'text/html');
@@ -467,7 +464,7 @@
     const dirtyEditors = _editors.filter(function (e) { return e.dirty; });
     if (!dirtyEditors.length) return;
 
-    window.AdminUI.showLoader('Сохраняем изменения на GitHub…');
+    window.AdminUI.showLoader('Сохраняем изменения…');
     try {
       // Берём свежий services.html — на случай если фото-редактор успел изменить файл
       const file = await window.GH.getTextFile(FILE, { force: true });

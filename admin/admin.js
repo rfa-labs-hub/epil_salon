@@ -8,8 +8,16 @@
 (function () {
   'use strict';
 
-  const ADMIN_PASSWORD = '00000000';
+  const DEFAULT_PASSWORD = '00000000';
+  const PASSWORD_STORAGE_KEY = 'epilsalon_admin_password_v1';
   const SESSION_AUTH_KEY = 'epilsalon_admin_authed_v1';
+
+  function getPassword() {
+    return localStorage.getItem(PASSWORD_STORAGE_KEY) || DEFAULT_PASSWORD;
+  }
+  function setPassword(value) {
+    localStorage.setItem(PASSWORD_STORAGE_KEY, value);
+  }
 
   const $ = function (id) { return document.getElementById(id); };
 
@@ -123,7 +131,7 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const v = (input.value || '').trim();
-      if (v === ADMIN_PASSWORD) {
+      if (v === getPassword()) {
         setAuthed(true);
         if (errEl) errEl.hidden = true;
         input.value = '';
@@ -235,6 +243,63 @@
         if (inp) { inp.value = ''; inp.focus(); }
       });
     }
+
+    bindPasswordForm();
+  }
+
+  function bindPasswordForm() {
+    const form = $('password-form');
+    const cur = $('pwd-current');
+    const nw = $('pwd-new');
+    const repeat = $('pwd-new-repeat');
+    const errEl = $('pwd-error');
+    if (!form || !cur || !nw || !repeat) return;
+
+    function showErr(msg) {
+      if (!errEl) return;
+      errEl.textContent = msg;
+      errEl.hidden = false;
+    }
+    function hideErr() { if (errEl) errEl.hidden = true; }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      hideErr();
+
+      const curVal = (cur.value || '').trim();
+      const newVal = (nw.value || '').trim();
+      const repeatVal = (repeat.value || '').trim();
+
+      if (curVal !== getPassword()) {
+        showErr('Текущий пароль введён неверно.');
+        cur.focus();
+        cur.select();
+        return;
+      }
+      if (newVal.length < 4) {
+        showErr('Новый пароль должен быть не короче 4 символов.');
+        nw.focus();
+        return;
+      }
+      if (newVal !== repeatVal) {
+        showErr('Новый пароль и повтор не совпадают.');
+        repeat.focus();
+        repeat.select();
+        return;
+      }
+      if (newVal === curVal) {
+        showErr('Новый пароль совпадает с текущим. Придумайте другой.');
+        nw.focus();
+        nw.select();
+        return;
+      }
+
+      setPassword(newVal);
+      cur.value = '';
+      nw.value = '';
+      repeat.value = '';
+      showToast('Используйте его при следующем входе.', 'success', 'Пароль изменён');
+    });
   }
 
   function bindTabs() {

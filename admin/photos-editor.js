@@ -166,8 +166,7 @@
 
     const section = el('section', { class: 'photo-section', 'data-section': opts.id });
     const header = el('div', { class: 'photo-section__header' }, [
-      el('h3', { class: 'photo-section__title', text: opts.title }),
-      el('p', { class: 'photo-section__hint', text: opts.hint || '' })
+      el('h3', { class: 'photo-section__title', text: opts.title })
     ]);
     section.appendChild(header);
 
@@ -196,8 +195,7 @@
     thumbWrap.appendChild(img);
 
     const info = el('div', { class: 'photo-card__info' }, [
-      el('div', { class: 'photo-card__label', text: item.alt || ('Фото ' + (index + 1)) }),
-      el('div', { class: 'photo-card__path', text: item.path, title: item.path })
+      el('div', { class: 'photo-card__label', text: item.alt || ('Фото ' + (index + 1)) })
     ]);
 
     const delBtn = el('button', { type: 'button', class: 'btn btn--danger-soft', text: 'Удалить' });
@@ -247,7 +245,7 @@
       if (!ok) return;
     }
 
-    window.AdminUI.showLoader('Загружаем фото на GitHub…');
+    window.AdminUI.showLoader('Загружаем фото…');
     try {
       const ext = getExt(file.name);
       const filename = Date.now() + '.' + ext;
@@ -340,8 +338,7 @@
 
     const section = el('section', { class: 'photo-section', 'data-section': opts.id });
     section.appendChild(el('div', { class: 'photo-section__header' }, [
-      el('h3', { class: 'photo-section__title', text: opts.title }),
-      el('p', { class: 'photo-section__hint', text: opts.hint || '' })
+      el('h3', { class: 'photo-section__title', text: opts.title })
     ]));
 
     const grid = el('div', { class: 'photo-grid' });
@@ -368,8 +365,7 @@
     thumbWrap.appendChild(img);
 
     const info = el('div', { class: 'photo-card__info' }, [
-      el('div', { class: 'photo-card__label', text: item.label }),
-      el('div', { class: 'photo-card__path', text: item.path, title: item.path })
+      el('div', { class: 'photo-card__label', text: item.label })
     ]);
 
     const replaceLabel = el('label', { class: 'btn btn--secondary', text: 'Заменить' });
@@ -450,8 +446,7 @@
     const HERO_PATH = 'images/hero.jfif';
     const section = el('section', { class: 'photo-section', 'data-section': 'hero' });
     section.appendChild(el('div', { class: 'photo-section__header' }, [
-      el('h3', { class: 'photo-section__title', text: 'Фон главной страницы' }),
-      el('p', { class: 'photo-section__hint', text: 'Большая картинка-фон в шапке главной страницы.' })
+      el('h3', { class: 'photo-section__title', text: 'Фон главной страницы' })
     ]));
 
     const grid = el('div', { class: 'photo-grid' });
@@ -462,8 +457,7 @@
     thumb.appendChild(img);
 
     const info = el('div', { class: 'photo-card__info' }, [
-      el('div', { class: 'photo-card__label', text: 'Hero (фон главной)' }),
-      el('div', { class: 'photo-card__path', text: HERO_PATH })
+      el('div', { class: 'photo-card__label', text: 'Фон главной страницы' })
     ]);
 
     const replaceLabel = el('label', { class: 'btn btn--secondary', text: 'Заменить' });
@@ -560,7 +554,7 @@
       el('h2', { class: 'section__title', text: 'Фото' }),
       el('p', {
         class: 'section__lead',
-        text: 'Управляйте фотографиями на сайте. Галереи можно расширять и сокращать, отдельные фото — заменять. Рекомендуем сжимать снимки до 1–2 МБ перед загрузкой.'
+        text: 'Добавляйте, удаляйте и заменяйте фотографии на сайте. Рекомендуем сжимать снимки до 1–2 МБ перед загрузкой.'
       })
     ]));
 
@@ -570,7 +564,6 @@
       container.appendChild(await renderGallerySection({
         id: 'works',
         title: 'Каталог работ',
-        hint: 'Галерея на странице «Услуги» — раздел Депиляция/Электроэпиляция.',
         fileKey: 'services',
         listSelector: '#works-gallery-list',
         folder: 'images/works/',
@@ -581,7 +574,6 @@
       container.appendChild(await renderGallerySection({
         id: 'resni',
         title: 'Ламинирование ресниц',
-        hint: 'Галерея на странице «Услуги» — раздел Ламинирование ресниц.',
         fileKey: 'services',
         listSelector: '#resni-gallery-list',
         folder: 'images/resni/',
@@ -592,7 +584,6 @@
       container.appendChild(await renderSinglesSection({
         id: 'masters',
         title: 'Фото мастеров',
-        hint: 'Замените фото на любое — состав и порядок мастеров остаются прежними.',
         fileKey: 'index',
         selector: 'img.master-card__img',
         makeLabel: function (img) {
@@ -602,19 +593,7 @@
         }
       }));
 
-      // Фото в карточках услуг
-      container.appendChild(await renderSinglesSection({
-        id: 'service-photos',
-        title: 'Фото в карточках услуг',
-        hint: 'Картинки внутри страниц услуг (Шугаринг, Шугаринг бикини).',
-        fileKey: 'services',
-        selector: 'img.service-content__img',
-        makeLabel: function (img) {
-          return img.getAttribute('alt') || 'Фото услуги';
-        }
-      }));
-
-      // Hero
+      // Фон главной страницы
       container.appendChild(await renderHeroSection());
     } catch (err) {
       container.appendChild(el('div', { class: 'placeholder' }, [

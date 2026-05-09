@@ -106,11 +106,26 @@
             </div>
           </section>
           <section class="settings__block">
-            <h3 class="settings__title">О системе</h3>
-            <p class="settings__text">
-              Изменения сохраняются в репозиторий <code>rfa-labs-hub/epil_salon</code> на GitHub.
-              После сохранения сайт <code>sugarepil.ru</code> обновляется автоматически за 30–90 секунд.
-            </p>
+            <h3 class="settings__title">Смена пароля</h3>
+            <p class="settings__text">Поменяйте пароль для входа в админ-панель.</p>
+            <form id="password-form" class="form" autocomplete="off">
+              <label class="field">
+                <span class="field__label">Текущий пароль</span>
+                <input id="pwd-current" class="field__input" type="password" autocomplete="off" required>
+              </label>
+              <label class="field">
+                <span class="field__label">Новый пароль</span>
+                <input id="pwd-new" class="field__input" type="password" autocomplete="off" required minlength="4">
+              </label>
+              <label class="field">
+                <span class="field__label">Повторите новый пароль</span>
+                <input id="pwd-new-repeat" class="field__input" type="password" autocomplete="off" required minlength="4">
+              </label>
+              <p id="pwd-error" class="form__error" hidden></p>
+              <div class="form__actions">
+                <button type="submit" class="btn btn--primary" id="pwd-submit">Сохранить новый пароль</button>
+              </div>
+            </form>
           </section>
         </div>
       </div>

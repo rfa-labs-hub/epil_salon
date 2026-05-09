@@ -508,17 +508,6 @@ code {
   align-items: center;
   gap: 10px;
 }
-.editor-card__title-sub {
-  font-family: var(--font-text);
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--color-text-light);
-  background: var(--color-surface);
-  padding: 2px 8px;
-  border-radius: 10px;
-  border: 1px solid var(--color-border);
-}
-
 .editor-card__toggle {
   font-size: 12px;
   color: var(--color-text-muted);
@@ -642,12 +631,6 @@ code {
   font-weight: 600;
 }
 
-.photo-section__hint {
-  font-size: 13px;
-  color: var(--color-text-muted);
-  margin: 0;
-}
-
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -691,14 +674,6 @@ code {
   color: var(--color-text);
 }
 
-.photo-card__path {
-  font-size: 11px;
-  font-family: 'SF Mono', Menlo, Consolas, monospace;
-  color: var(--color-text-light);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 
 .photo-card__actions {
   display: flex;
