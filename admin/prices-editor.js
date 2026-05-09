@@ -462,7 +462,7 @@
 
   async function saveAll() {
     const dirtyEditors = _editors.filter(function (e) { return e.dirty; });
-    if (!dirtyEditors.length) return;
+    if (!dirtyEditors.length) return true;
 
     window.AdminUI.showLoader('Сохраняем изменения…');
     try {
@@ -487,11 +487,13 @@
       });
       updateGlobalActions();
       window.AdminUI.showToast('Сайт обновится через 30–90 секунд.', 'success', 'Изменения сохранены!');
+      return true;
     } catch (err) {
       window.AdminUI.showToast(err.userMessage || err.message || 'Ошибка сохранения.', 'error', 'Не удалось сохранить');
       if (/sha|409|422|conflict/i.test(err.message || '')) {
         await reload(true);
       }
+      return false;
     } finally {
       window.AdminUI.hideLoader();
     }
@@ -506,5 +508,14 @@
     reload(false);
   }
 
-  window.PricesEditor = { mount: mount };
+  window.PricesEditor = {
+    mount: mount,
+    hasUnsavedChanges: function () {
+      return _editors.some(function (e) { return e.dirty; });
+    },
+    saveAll: saveAll,
+    discardAll: function () {
+      return reload(true);
+    }
+  };
 })();

@@ -826,6 +826,10 @@ code {
   box-shadow: var(--shadow-lg);
   padding: 24px;
 }
+
+#unsaved-dialog .dialog__box {
+  max-width: 520px;
+}
 .dialog__title {
   margin: 0 0 8px;
   font-family: var(--font-heading);
@@ -842,6 +846,70 @@ code {
   gap: 10px;
   justify-content: flex-end;
   flex-wrap: wrap;
+}
+
+.dialog__actions--triple {
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   Контакты и ссылки (админка)
+   ========================================================================== */
+
+.contact-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 720px;
+}
+
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px 16px;
+  padding: 14px 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.contact-row__label {
+  font-weight: 600;
+  min-width: 130px;
+  flex-shrink: 0;
+}
+
+.contact-row__main {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-row__value {
+  display: block;
+  word-break: break-word;
+  font-size: 14px;
+  color: var(--color-text);
+  line-height: 1.45;
+}
+
+.contact-row__input {
+  width: 100%;
+}
+
+.contact-row__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+@media (max-width: 520px) {
+  .contact-row__actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }
 
 /* ==========================================================================

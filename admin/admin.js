@@ -6,7 +6,7 @@
  * одинаковый на всех устройствах. Смена — через GitHub API.
  *
  * Зависит от: github.js (window.GH), prices-editor.js (window.PricesEditor),
- *             photos-editor.js (window.PhotosEditor)
+ *             photos-editor.js (window.PhotosEditor), contacts-editor.js (window.ContactsEditor)
  */
 (function () {
   'use strict';
@@ -124,6 +124,61 @@
     });
   }
 
+  /**
+   * Диалог при уходе с вкладки «Цены» с несохранёнными правками.
+   * @returns {Promise<'save'|'discard'|'cancel'>}
+   */
+  function showUnsavedPricesDialog() {
+    return new Promise(function (resolve) {
+      const dlg = $('unsaved-dialog');
+      const saveBtn = $('unsaved-save');
+      const discardBtn = $('unsaved-discard');
+      const stayBtn = $('unsaved-stay');
+      const backdrop = $('unsaved-backdrop');
+      if (!dlg || !saveBtn || !discardBtn || !stayBtn) {
+        resolve(window.confirm('Сохранить изменения в ценах?') ? 'save' : 'cancel');
+        return;
+      }
+      dlg.hidden = false;
+
+      function cleanup() {
+        dlg.hidden = true;
+        saveBtn.removeEventListener('click', onSave);
+        discardBtn.removeEventListener('click', onDiscard);
+        stayBtn.removeEventListener('click', onStay);
+        if (backdrop) backdrop.removeEventListener('click', onStay);
+      }
+      function onSave() { cleanup(); resolve('save'); }
+      function onDiscard() { cleanup(); resolve('discard'); }
+      function onStay() { cleanup(); resolve('cancel'); }
+      saveBtn.addEventListener('click', onSave);
+      discardBtn.addEventListener('click', onDiscard);
+      stayBtn.addEventListener('click', onStay);
+      if (backdrop) backdrop.addEventListener('click', onStay);
+      stayBtn.focus();
+    });
+  }
+
+  /**
+   * Если в ценах есть несохранённые правки — спросить, сохранить или сбросить.
+   * @returns {Promise<boolean>} true — можно продолжать действие
+   */
+  async function ensurePricesSavedOrAbandon() {
+    if (!window.PricesEditor || typeof window.PricesEditor.hasUnsavedChanges !== 'function') return true;
+    if (!window.PricesEditor.hasUnsavedChanges()) return true;
+    const choice = await showUnsavedPricesDialog();
+    if (choice === 'cancel') return false;
+    if (choice === 'save') {
+      const ok = await window.PricesEditor.saveAll();
+      return !!ok;
+    }
+    if (choice === 'discard') {
+      await window.PricesEditor.discardAll();
+      return true;
+    }
+    return false;
+  }
+
   // ----- Маршрутизация экранов и вкладок ---------------------------------
 
   const SCREENS = ['screen-login', 'screen-setup', 'screen-app'];
@@ -134,8 +189,10 @@
     });
   }
 
-  const TABS = ['prices', 'photos', 'settings'];
-  function showTab(name) {
+  const TABS = ['prices', 'photos', 'contacts', 'settings'];
+  let _activeTab = null;
+
+  function activateTabPanel(name) {
     if (TABS.indexOf(name) === -1) name = 'prices';
     TABS.forEach(function (t) {
       const tab = document.querySelector('.app__tab[data-tab="' + t + '"]');
@@ -145,6 +202,30 @@
     });
     if (name === 'prices' && window.PricesEditor) window.PricesEditor.mount($('tab-prices'));
     if (name === 'photos' && window.PhotosEditor) window.PhotosEditor.mount($('tab-photos'));
+    if (name === 'contacts' && window.ContactsEditor) window.ContactsEditor.mount($('tab-contacts'));
+  }
+
+  async function trySwitchTab(name) {
+    if (TABS.indexOf(name) === -1) name = 'prices';
+    if (_activeTab === null) {
+      activateTabPanel(name);
+      _activeTab = name;
+      return;
+    }
+    if (name === _activeTab) return;
+    if (_activeTab === 'prices' && window.PricesEditor && window.PricesEditor.hasUnsavedChanges()) {
+      const choice = await showUnsavedPricesDialog();
+      if (choice === 'cancel') return;
+      if (choice === 'save') {
+        const ok = await window.PricesEditor.saveAll();
+        if (!ok) return;
+      }
+      if (choice === 'discard') {
+        await window.PricesEditor.discardAll();
+      }
+    }
+    activateTabPanel(name);
+    _activeTab = name;
   }
 
   // ----- Авторизация ------------------------------------------------------
@@ -232,7 +313,8 @@
         showToast('Подключение к GitHub успешно.', 'success', 'Готово!');
         input.value = '';
         showScreen('screen-app');
-        showTab('prices');
+        activateTabPanel('prices');
+        _activeTab = 'prices';
       } catch (err) {
         window.GH.clearToken();
         if (errEl) {
@@ -264,7 +346,8 @@
     refreshInfo();
 
     if (replace) {
-      replace.addEventListener('click', function () {
+      replace.addEventListener('click', async function () {
+        if (!(await ensurePricesSavedOrAbandon())) return;
         window.GH.clearCache();
         showScreen('screen-setup');
       });
@@ -277,6 +360,7 @@
           'Удалить'
         );
         if (!ok) return;
+        if (!(await ensurePricesSavedOrAbandon())) return;
         window.GH.clearToken();
         window.GH.clearCache();
         setAuthed(false);
@@ -286,7 +370,8 @@
       });
     }
     if (logout) {
-      logout.addEventListener('click', function () {
+      logout.addEventListener('click', async function () {
+        if (!(await ensurePricesSavedOrAbandon())) return;
         setAuthed(false);
         showScreen('screen-login');
         const inp = $('login-password');
@@ -386,7 +471,7 @@
     document.querySelectorAll('.app__tab').forEach(function (tab) {
       tab.addEventListener('click', function () {
         const name = tab.getAttribute('data-tab');
-        if (name) showTab(name);
+        if (name) void trySwitchTab(name);
       });
     });
   }
@@ -405,7 +490,8 @@
       return;
     }
     showScreen('screen-app');
-    showTab('prices');
+    activateTabPanel('prices');
+    _activeTab = 'prices';
   }
 
   window.AdminUI = {

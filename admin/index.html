@@ -85,6 +85,10 @@
         <span class="app__tab-icon" aria-hidden="true">◧</span>
         <span>Фото</span>
       </button>
+      <button class="app__tab" role="tab" aria-selected="false" data-tab="contacts" type="button">
+        <span class="app__tab-icon" aria-hidden="true">◎</span>
+        <span>Контакты</span>
+      </button>
       <button class="app__tab" role="tab" aria-selected="false" data-tab="settings" type="button">
         <span class="app__tab-icon" aria-hidden="true">⚙</span>
         <span>Настройки</span>
@@ -94,6 +98,7 @@
     <main class="app__main">
       <div id="tab-prices" class="tab-content" role="tabpanel"></div>
       <div id="tab-photos" class="tab-content" role="tabpanel" hidden></div>
+      <div id="tab-contacts" class="tab-content" role="tabpanel" hidden></div>
       <div id="tab-settings" class="tab-content" role="tabpanel" hidden>
         <div class="settings">
           <h2 class="section__title">Настройки</h2>
@@ -158,9 +163,23 @@
     </div>
   </div>
 
+  <div id="unsaved-dialog" class="dialog" hidden>
+    <div class="dialog__backdrop" id="unsaved-backdrop"></div>
+    <div class="dialog__box" role="dialog" aria-modal="true" aria-labelledby="unsaved-title">
+      <h2 id="unsaved-title" class="dialog__title">Несохранённые изменения</h2>
+      <p id="unsaved-text" class="dialog__text">На вкладке «Цены» есть правки, которые ещё не отправлены на сайт. Что сделать?</p>
+      <div class="dialog__actions dialog__actions--triple">
+        <button type="button" class="btn btn--ghost" id="unsaved-stay">Остаться</button>
+        <button type="button" class="btn btn--secondary" id="unsaved-discard">Перейти без сохранения</button>
+        <button type="button" class="btn btn--primary" id="unsaved-save">Сохранить</button>
+      </div>
+    </div>
+  </div>
+
   <script src="github.js"></script>
   <script src="prices-editor.js"></script>
   <script src="photos-editor.js"></script>
+  <script src="contacts-editor.js"></script>
   <script src="admin.js"></script>
 </body>
 </html>
