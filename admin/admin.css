@@ -38,6 +38,9 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+/* Атрибут hidden должен перебивать любой display из правил ниже */
+[hidden] { display: none !important; }
+
 html, body { height: 100%; }
 
 body.admin-body {
