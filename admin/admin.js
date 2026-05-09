@@ -2,24 +2,59 @@
  * Главный модуль админки: авторизация, маршрутизация по вкладкам,
  * утилиты UI (toast, loader, confirm).
  *
+ * Пароль: хранится в репозитории (admin/config.json) как SHA-256,
+ * одинаковый на всех устройствах. Смена — через GitHub API.
+ *
  * Зависит от: github.js (window.GH), prices-editor.js (window.PricesEditor),
  *             photos-editor.js (window.PhotosEditor)
  */
 (function () {
   'use strict';
 
-  const DEFAULT_PASSWORD = '00000000';
-  const PASSWORD_STORAGE_KEY = 'epilsalon_admin_password_v1';
+  const CONFIG_PATH = 'admin/config.json';
   const SESSION_AUTH_KEY = 'epilsalon_admin_authed_v1';
 
-  function getPassword() {
-    return localStorage.getItem(PASSWORD_STORAGE_KEY) || DEFAULT_PASSWORD;
-  }
-  function setPassword(value) {
-    localStorage.setItem(PASSWORD_STORAGE_KEY, value);
-  }
+  /** Хеш пароля по умолчанию «00000000» (SHA-256, hex). Если config.json недоступен — используется он. */
+  const DEFAULT_PASSWORD_HASH = '7e071fd9b023ed8f18458a73613a0834f6220bd5cc50357ba3493c6040a9ea8c';
 
   const $ = function (id) { return document.getElementById(id); };
+
+  /**
+   * SHA-256 строки в нижний регистр hex (как в config.json).
+   */
+  async function sha256Hex(str) {
+    const enc = new TextEncoder();
+    const buf = await crypto.subtle.digest('SHA-256', enc.encode(str));
+    const arr = new Uint8Array(buf);
+    let hex = '';
+    for (let i = 0; i < arr.length; i++) {
+      hex += arr[i].toString(16).padStart(2, '0');
+    }
+    return hex;
+  }
+
+  /**
+   * Хеш пароля с опубликованного config.json (без токена GitHub).
+   */
+  async function fetchPublicPasswordHash() {
+    const url = new URL('config.json', window.location.href);
+    url.searchParams.set('t', String(Date.now()));
+    let response;
+    try {
+      response = await fetch(url.toString(), { cache: 'no-store' });
+    } catch (e) {
+      return DEFAULT_PASSWORD_HASH;
+    }
+    if (!response.ok) return DEFAULT_PASSWORD_HASH;
+    try {
+      const data = await response.json();
+      const h = data && data.password_sha256;
+      if (typeof h !== 'string' || !/^[a-f0-9]{64}$/i.test(h)) return DEFAULT_PASSWORD_HASH;
+      return h.toLowerCase();
+    } catch (e) {
+      return DEFAULT_PASSWORD_HASH;
+    }
+  }
 
   // ----- UI utils ---------------------------------------------------------
 
@@ -126,20 +161,35 @@
     const form = $('login-form');
     const input = $('login-password');
     const errEl = $('login-error');
+    const submitBtn = form && form.querySelector('button[type="submit"]');
     if (!form || !input) return;
 
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
       const v = (input.value || '').trim();
-      if (v === getPassword()) {
-        setAuthed(true);
-        if (errEl) errEl.hidden = true;
-        input.value = '';
-        bootstrap();
-      } else {
-        if (errEl) errEl.hidden = false;
-        input.focus();
-        input.select();
+      if (errEl) errEl.hidden = true;
+      if (submitBtn) submitBtn.disabled = true;
+      showLoader('Проверяем пароль…');
+      try {
+        const expected = await fetchPublicPasswordHash();
+        const got = await sha256Hex(v);
+        if (got === expected) {
+          setAuthed(true);
+          input.value = '';
+          await bootstrap();
+        } else {
+          if (errEl) errEl.hidden = false;
+          input.focus();
+          input.select();
+        }
+      } catch (err) {
+        if (errEl) {
+          errEl.hidden = false;
+          errEl.textContent = 'Не удалось проверить пароль. Проверьте интернет и обновите страницу.';
+        }
+      } finally {
+        hideLoader();
+        if (submitBtn) submitBtn.disabled = false;
       }
     });
     input.focus();
@@ -253,6 +303,7 @@
     const nw = $('pwd-new');
     const repeat = $('pwd-new-repeat');
     const errEl = $('pwd-error');
+    const submitBtn = form && form.querySelector('button[type="submit"]');
     if (!form || !cur || !nw || !repeat) return;
 
     function showErr(msg) {
@@ -262,20 +313,19 @@
     }
     function hideErr() { if (errEl) errEl.hidden = true; }
 
-    form.addEventListener('submit', function (e) {
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
       hideErr();
+
+      if (!window.GH.getToken()) {
+        showErr('Сначала подключите ключ GitHub в блоке выше — без него нельзя сохранить новый пароль на сайт.');
+        return;
+      }
 
       const curVal = (cur.value || '').trim();
       const newVal = (nw.value || '').trim();
       const repeatVal = (repeat.value || '').trim();
 
-      if (curVal !== getPassword()) {
-        showErr('Текущий пароль введён неверно.');
-        cur.focus();
-        cur.select();
-        return;
-      }
       if (newVal.length < 4) {
         showErr('Новый пароль должен быть не короче 4 символов.');
         nw.focus();
@@ -287,18 +337,48 @@
         repeat.select();
         return;
       }
-      if (newVal === curVal) {
-        showErr('Новый пароль совпадает с текущим. Придумайте другой.');
-        nw.focus();
-        nw.select();
-        return;
-      }
 
-      setPassword(newVal);
-      cur.value = '';
-      nw.value = '';
-      repeat.value = '';
-      showToast('Используйте его при следующем входе.', 'success', 'Пароль изменён');
+      if (submitBtn) submitBtn.disabled = true;
+      showLoader('Сохраняем новый пароль…');
+      try {
+        const curHash = await sha256Hex(curVal);
+        const file = await window.GH.getTextFile(CONFIG_PATH, { force: true });
+        let cfg;
+        try {
+          cfg = JSON.parse(file.content);
+        } catch (parseErr) {
+          throw new Error('Файл настроек повреждён. Обратитесь к разработчику.');
+        }
+        const stored = String(cfg.password_sha256 || '').toLowerCase();
+        if (stored !== curHash) {
+          showErr('Текущий пароль введён неверно.');
+          cur.focus();
+          cur.select();
+          return;
+        }
+
+        const newHash = await sha256Hex(newVal);
+        if (newHash === stored) {
+          showErr('Новый пароль совпадает с текущим. Придумайте другой.');
+          nw.focus();
+          nw.select();
+          return;
+        }
+
+        cfg.password_sha256 = newHash;
+        const newContent = JSON.stringify(cfg, null, 2) + '\n';
+        await window.GH.putTextFile(CONFIG_PATH, newContent, 'admin: change panel password');
+
+        cur.value = '';
+        nw.value = '';
+        repeat.value = '';
+        showToast('Теперь этот пароль подходит на любом устройстве. Подождите до минуты, пока сайт обновится.', 'success', 'Пароль изменён');
+      } catch (err) {
+        showErr(err.userMessage || err.message || 'Не удалось сохранить пароль.');
+      } finally {
+        hideLoader();
+        if (submitBtn) submitBtn.disabled = false;
+      }
     });
   }
 
@@ -328,7 +408,6 @@
     showTab('prices');
   }
 
-  // Экспорт служебных утилит для дочерних модулей
   window.AdminUI = {
     showToast: showToast,
     showLoader: showLoader,

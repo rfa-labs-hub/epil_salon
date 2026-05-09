@@ -107,7 +107,11 @@
           </section>
           <section class="settings__block">
             <h3 class="settings__title">Смена пароля</h3>
-            <p class="settings__text">Поменяйте пароль для входа в админ-панель.</p>
+            <p class="settings__text">
+              Пароль хранится в файле настроек на сайте (только технический отпечаток SHA-256, не сам текст).
+              После смены один и тот же пароль подходит на любом устройстве.
+              Чтобы сохранить новый пароль, нужен подключённый ключ GitHub в блоке выше.
+            </p>
             <form id="password-form" class="form" autocomplete="off">
               <label class="field">
                 <span class="field__label">Текущий пароль</span>
