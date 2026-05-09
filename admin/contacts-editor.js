@@ -10,6 +10,10 @@
   const REVIEWS = 'reviews.html';
 
   let _container = null;
+  let _values = {
+    instagram: '', telegram: '', phone: '',
+    address1: '', address2: '', booking: ''
+  };
 
   function el(tag, attrs, children) {
     const e = document.createElement(tag);
@@ -227,6 +231,7 @@
       window.AdminUI.hideLoader();
     }
 
+    const list = el('div', { class: 'contact-rows' });
     FIELD_META.forEach(function (meta) {
       list.appendChild(renderRow(meta));
     });
