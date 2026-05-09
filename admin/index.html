@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Админ-панель — Студия эпиляции Елены Гончаровой</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- ============================== ЭКРАН: ВХОД ============================== -->
+  <section id="screen-login" class="screen" hidden>
+    <div class="card card--narrow">
+      <h1 class="card__title">Админ-панель</h1>
+      <p class="card__lead">Студия эпиляции Елены Гончаровой</p>
+      <form id="login-form" class="form" autocomplete="off">
+        <label class="field">
+          <span class="field__label">Пароль</span>
+          <input id="login-password" class="field__input" type="password" inputmode="numeric" autocomplete="off" required>
+        </label>
+        <p id="login-error" class="form__error" hidden>Неверный пароль</p>
+        <button type="submit" class="btn btn--primary btn--block">Войти</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ====================== ЭКРАН: ПЕРВОНАЧАЛЬНАЯ НАСТРОЙКА ====================== -->
+  <section id="screen-setup" class="screen" hidden>
+    <div class="card">
+      <h1 class="card__title">Подключение к GitHub</h1>
+      <p class="card__lead">Это нужно сделать один раз. После этого вы сможете менять цены и фото на сайте.</p>
+
+      <details class="howto" open>
+        <summary class="howto__summary">Как получить ключ доступа GitHub (показать инструкцию)</summary>
+        <ol class="howto__list">
+          <li>Откройте <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener">страницу создания ключа</a> (войдите в свой аккаунт GitHub).</li>
+          <li>Нажмите кнопку <strong>«Generate new token»</strong>.</li>
+          <li>В поле <strong>Token name</strong> впишите: <code>admin sugarepil</code>.</li>
+          <li>В <strong>Expiration</strong> выберите срок (например, «No expiration» или «1 year»).</li>
+          <li>В <strong>Repository access</strong> выберите <em>Only select repositories</em> и в выпадающем списке найдите <code>rfa-labs-hub/epil_salon</code>.</li>
+          <li>В <strong>Repository permissions</strong> найдите строку <strong>Contents</strong> и поставьте <em>Read and write</em>.</li>
+          <li>Прокрутите вниз и нажмите <strong>Generate token</strong>.</li>
+          <li>Скопируйте получившийся ключ (он начинается на <code>github_pat_…</code>) и вставьте в поле ниже.</li>
+        </ol>
+        <p class="howto__note">Ключ сохранится только в этом браузере и нигде больше. Никто, кроме вас, его не увидит.</p>
+      </details>
+
+      <form id="setup-form" class="form" autocomplete="off">
+        <label class="field">
+          <span class="field__label">Ключ доступа GitHub</span>
+          <input id="setup-token" class="field__input field__input--mono" type="password" placeholder="github_pat_..." autocomplete="off" required>
+          <button type="button" class="field__toggle" id="setup-token-toggle" aria-label="Показать ключ">показать</button>
+        </label>
+        <p id="setup-error" class="form__error" hidden></p>
+        <div class="form__actions">
+          <button type="submit" class="btn btn--primary btn--block" id="setup-submit">Подключиться</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================== ОСНОВНОЕ ПРИЛОЖЕНИЕ ============================== -->
+  <section id="screen-app" class="app" hidden>
+    <header class="app__header">
+      <div class="app__brand">
+        <span class="app__brand-title">Админ-панель</span>
+        <span class="app__brand-sub">Студия эпиляции</span>
+      </div>
+      <div class="app__header-actions">
+        <a class="btn btn--ghost btn--small" href="../index.html" target="_blank" rel="noopener">Открыть сайт</a>
+        <button id="logout-btn" class="btn btn--ghost btn--small" type="button">Выйти</button>
+      </div>
+    </header>
+
+    <nav class="app__tabs" role="tablist" aria-label="Разделы админки">
+      <button class="app__tab" role="tab" aria-selected="true" data-tab="prices" type="button">
+        <span class="app__tab-icon" aria-hidden="true">₽</span>
+        <span>Цены</span>
+      </button>
+      <button class="app__tab" role="tab" aria-selected="false" data-tab="photos" type="button">
+        <span class="app__tab-icon" aria-hidden="true">◧</span>
+        <span>Фото</span>
+      </button>
+      <button class="app__tab" role="tab" aria-selected="false" data-tab="settings" type="button">
+        <span class="app__tab-icon" aria-hidden="true">⚙</span>
+        <span>Настройки</span>
+      </button>
+    </nav>
+
+    <main class="app__main">
+      <div id="tab-prices" class="tab-content" role="tabpanel"></div>
+      <div id="tab-photos" class="tab-content" role="tabpanel" hidden></div>
+      <div id="tab-settings" class="tab-content" role="tabpanel" hidden>
+        <div class="settings">
+          <h2 class="section__title">Настройки</h2>
+          <section class="settings__block">
+            <h3 class="settings__title">Подключение к GitHub</h3>
+            <p class="settings__text" id="settings-token-info">Ключ сохранён в этом браузере.</p>
+            <div class="settings__actions">
+              <button class="btn btn--secondary" type="button" id="settings-replace-token">Заменить ключ</button>
+              <button class="btn btn--danger-soft" type="button" id="settings-clear-token">Удалить ключ</button>
+            </div>
+          </section>
+          <section class="settings__block">
+            <h3 class="settings__title">О системе</h3>
+            <p class="settings__text">
+              Изменения сохраняются в репозиторий <code>rfa-labs-hub/epil_salon</code> на GitHub.
+              После сохранения сайт <code>sugarepil.ru</code> обновляется автоматически за 30–90 секунд.
+            </p>
+          </section>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- ============================== TOAST'Ы И LOADER ============================== -->
+  <div id="toasts" class="toasts" aria-live="polite" aria-atomic="true"></div>
+
+  <div id="loader" class="loader" hidden>
+    <div class="loader__box">
+      <div class="loader__spinner" aria-hidden="true"></div>
+      <p class="loader__text" id="loader-text">Загрузка…</p>
+    </div>
+  </div>
+
+  <div id="confirm-dialog" class="dialog" hidden>
+    <div class="dialog__backdrop"></div>
+    <div class="dialog__box" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <h2 id="confirm-title" class="dialog__title">Подтверждение</h2>
+      <p id="confirm-text" class="dialog__text"></p>
+      <div class="dialog__actions">
+        <button type="button" class="btn btn--ghost" id="confirm-cancel">Отмена</button>
+        <button type="button" class="btn btn--danger" id="confirm-ok">Удалить</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="github.js"></script>
+  <script src="prices-editor.js"></script>
+  <script src="photos-editor.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
